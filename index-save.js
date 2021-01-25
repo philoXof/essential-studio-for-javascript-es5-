@@ -304,7 +304,7 @@ var listview = new ej.lists.ListView({
   height: "180px"
 });
 listview.appendTo("#undoList");
-/*
+
 var clearHistory = new ej.buttons.Button({
   content: "Clear History"
 });
@@ -326,21 +326,21 @@ startGroupAction.element.onclick = function() {
     startGroupAction.content = "Start Group Action";
   }
 };
-/*var undoButton = new ej.buttons.Button({
+var undoButton = new ej.buttons.Button({
   disabled: true
 });
 undoButton.appendTo("#undo");
 undoButton.element.onclick = function() {
   diagram.undo();
-};*/
+};
 
-/*var redoButton = new ej.buttons.Button({
+var redoButton = new ej.buttons.Button({
   disabled: true
 });
 redoButton.appendTo("#redo");
 redoButton.element.onclick = function() {
   diagram.redo();
-};*/
+};
 function getNodeDefaults(obj) {
   obj.annotations[0].style.color = "#111111";
   return obj;
