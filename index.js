@@ -1,5 +1,5 @@
 ej.base.enableRipple(true);
-ej.diagrams.Diagram.Inject(ej.diagrams.UndoRedo);
+//ej.diagrams.Diagram.Inject(ej.diagrams.UndoRedo);
 var diagram;
 var nodes = [
   {
@@ -229,7 +229,6 @@ var connectors = [
     sourcePortID: "goto15",
     targetPortID: "5to15",
     type: "Orthogonal",
-    //constraints: "InheritBridging", // pas la bonne syntaxe
     cornerRadius: 10, //arrondir
     segments: [{ type: "Orthogonal", length: 50, direction: "Right" }],
     annotations: [{ /*content: "Yes",*/ style: { fill: "white" } }]
@@ -251,8 +250,6 @@ var connectors = [
     targetID: "node20",
     sourcePortID: "goto20",
     targetPortID: "18to20",
-    type: "Orthogonal",
-    //constraints: "InheritBridging", // pas la bonne syntaxe
     cornerRadius: 10, //arrondir
     segments: [{ type: "Orthogonal", length: 50, direction: "Right" }],
     annotations: [{ /*content: "Yes",*/ style: { fill: "white" } }]
@@ -291,6 +288,15 @@ var stackLimit = new ej.inputs.NumericTextBox({
 });
 stackLimit.appendTo("#StackLimit");
 
+function getNodeDefaults(obj) {
+  obj.annotations[0].style.color = "#111111";
+  return obj;
+}
+
+//à voir
+var animation = new ej.base.Animation({ duration: 5000 });
+animation.animate("#node14", { name: "FadeOut" });
+/*
 var listviewInstance = new ej.lists.ListView({
   fields: { value: "value", text: "text" },
   headerTitle: "Device settings",
@@ -304,7 +310,7 @@ var listview = new ej.lists.ListView({
   height: "180px"
 });
 listview.appendTo("#undoList");
-/*
+
 var clearHistory = new ej.buttons.Button({
   content: "Clear History"
 });
@@ -326,27 +332,24 @@ startGroupAction.element.onclick = function() {
     startGroupAction.content = "Start Group Action";
   }
 };
-/*var undoButton = new ej.buttons.Button({
+var undoButton = new ej.buttons.Button({
   disabled: true
 });
 undoButton.appendTo("#undo");
 undoButton.element.onclick = function() {
   diagram.undo();
-};*/
+};
 
-/*var redoButton = new ej.buttons.Button({
+var redoButton = new ej.buttons.Button({
   disabled: true
 });
 redoButton.appendTo("#redo");
 redoButton.element.onclick = function() {
   diagram.redo();
 };*/
-function getNodeDefaults(obj) {
-  obj.annotations[0].style.color = "#111111";
-  return obj;
-}
-function getValue() {
-  var undoStack = diagram.historyManager.undoStack;
+
+/*function getValue() {
+ /* var undoStack = diagram.historyManager.undoStack;
   var redoStack = diagram.historyManager.redoStack;
   var undo = [];
   for (var i = 0; i < undoStack.length; i++) {
@@ -372,4 +375,4 @@ function getValue() {
   redoList.fields = { text: "text", value: "text" };
   redoList.index = 0;
   redoList.dataBind();
-}
+}*/
