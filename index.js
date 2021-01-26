@@ -1,6 +1,8 @@
 ej.base.enableRipple(true);
 //ej.diagrams.Diagram.Inject(ej.diagrams.UndoRedo);
 var diagram;
+
+//CREATION DES DIFFERENTS ELEMENTS AVEC TAILLE POSITION COULEURS
 var nodes = [
   {
     id: "node1",
@@ -194,6 +196,7 @@ var nodes = [
   }
 ];
 
+//LIENS ENTRE LES ELEMENTS
 var connectors = [
   {
     id: "connector1",
@@ -260,6 +263,7 @@ diagram = new ej.diagrams.Diagram({
   width: "100%",
   height: "600px",
   nodes: nodes,
+  //tool: DiagramTools.None,
   connectors: connectors,
   getNodeDefaults: getNodeDefaults,
   snapSettings: { constraints: ej.diagrams.SnapConstraints.None },
@@ -271,9 +275,9 @@ diagram = new ej.diagrams.Diagram({
 });
 diagram.appendTo("#diagram");
 
-diagram.historyChange = function(arg) {
+/*diagram.historyChange = function(arg) {
   getValue();
-};
+};*/
 diagram.fitToPage({ mode: "Height" });
 var stackLimit = new ej.inputs.NumericTextBox({
   value: 0,
@@ -281,10 +285,10 @@ var stackLimit = new ej.inputs.NumericTextBox({
   max: 50,
   width: "100%",
   format: "##.##",
-  step: 1,
-  change: function(args) {
+  step: 1
+  /*change: function(args) {
     diagram.setStackLimit(args.value);
-  }
+  }*/
 });
 stackLimit.appendTo("#StackLimit");
 
@@ -293,7 +297,8 @@ function getNodeDefaults(obj) {
   return obj;
 }
 
-//à voir
+
+/*à voir
 var animation = new ej.base.Animation({ duration: 5000 });
 animation.animate("#node14", { name: "FadeOut" });
 /*
