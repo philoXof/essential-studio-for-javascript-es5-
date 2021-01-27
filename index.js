@@ -1,5 +1,6 @@
-ej.base.enableRipple(true);
+//ej.base.enableRipple(true);
 //ej.diagrams.Diagram.Inject(ej.diagrams.UndoRedo);
+
 var diagram;
 
 //CREATION DES DIFFERENTS ELEMENTS AVEC TAILLE POSITION COULEURS
@@ -268,39 +269,42 @@ diagram = new ej.diagrams.Diagram({
   getNodeDefaults: getNodeDefaults,
   snapSettings: { constraints: ej.diagrams.SnapConstraints.None },
   getConnectorDefaults: function(obj) {
-    obj.style.fill = "#707070";
-    obj.targetDecorator.style.fill = "#707070";
-    obj.targetDecorator.style.strokeColor = "#707070";
+    obj.style.fill = "#00ff00";
+    obj.targetDecorator.style.fill = "#ff0000"; //remplissage fleche
+    obj.targetDecorator.style.strokeColor = "#ff0000"; //contour fleche
   }
 });
 diagram.appendTo("#diagram");
-
-/*diagram.historyChange = function(arg) {
-  getValue();
-};*/
-diagram.fitToPage({ mode: "Height" });
-var stackLimit = new ej.inputs.NumericTextBox({
-  value: 0,
-  min: 0,
-  max: 50,
-  width: "100%",
-  format: "##.##",
-  step: 1
-  /*change: function(args) {
-    diagram.setStackLimit(args.value);
-  }*/
-});
-stackLimit.appendTo("#StackLimit");
 
 function getNodeDefaults(obj) {
   obj.annotations[0].style.color = "#111111";
   return obj;
 }
 
+diagram.fitToPage({ mode: "Height" });
+
+/*diagram.historyChange = function(arg) {
+  getValue();
+};*/
+
+//text box numérique selon le site wiki sans pas de changements, ce types d'éléments n'est pas présent
+/*var stackLimit = new ej.inputs.NumericTextBox({
+  value: 0,
+  min: 0,
+  max: 50,
+  width: "100%",
+  format: "##.##",
+  step: 1,
+  change: function(args) {
+    diagram.setStackLimit(args.value);
+  }
+});
+stackLimit.appendTo("#StackLimit");*/
 
 /*à voir
 var animation = new ej.base.Animation({ duration: 5000 });
 animation.animate("#node14", { name: "FadeOut" });
+
 /*
 var listviewInstance = new ej.lists.ListView({
   fields: { value: "value", text: "text" },
