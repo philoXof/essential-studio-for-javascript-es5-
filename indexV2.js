@@ -119,7 +119,7 @@ var nodes = [
     id: "node12",
     offsetX: 600,
     offsetY: 350,
-    style: { fill: "#DCDCDC", strokeColor: "#DCDCDC" },
+    style: { fill: "#DCDCDC", strokeColor: "#0f0" }, // CONTOUR VERT
     annotations: [{ id: "label1", content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
@@ -127,7 +127,7 @@ var nodes = [
     id: "node13",
     offsetX: 700,
     offsetY: 350,
-    style: { fill: "#dcdcdc", strokeColor: "#DCDCDC" },
+    style: { fill: "#0f0", strokeColor: "#DCDCDC" }, // INTERIEUR VERT
     annotations: [{ id: "label1", content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
@@ -233,9 +233,9 @@ var connectors = [
     sourcePortID: "goto15",
     targetPortID: "5to15",
     type: "Orthogonal",
-    cornerRadius: 10,
+    cornerRadius: 10, //arrondir
     segments: [{ type: "Orthogonal", length: 50, direction: "Right" }],
-    annotations: [{ style: { fill: "white" } }]
+    annotations: [{ /*content: "Yes",*/ style: { fill: "white" } }]
   },
   {
     id: "connector24",
@@ -244,9 +244,9 @@ var connectors = [
     sourcePortID: "goto19",
     targetPortID: "5to19",
     type: "Orthogonal",
-    cornerRadius: 10,
+    cornerRadius: 10, //arrondir
     segments: [{ type: "Orthogonal", length: 50, direction: "Right" }],
-    annotations: [{ style: { fill: "white" } }]
+    annotations: [{ /*content: "Yes",*/ style: { fill: "white" } }]
   },
   {
     id: "connector25",
@@ -254,9 +254,9 @@ var connectors = [
     targetID: "node20",
     sourcePortID: "goto20",
     targetPortID: "18to20",
-    cornerRadius: 10,
+    cornerRadius: 10, //arrondir
     segments: [{ type: "Orthogonal", length: 50, direction: "Right" }],
-    annotations: [{ style: { fill: "white" } }]
+    annotations: [{ /*content: "Yes",*/ style: { fill: "white" } }]
   }
 ];
 
@@ -290,3 +290,106 @@ function getNodeDefaults(obj) {
 }
 
 diagram.fitToPage({ mode: "Height" });
+
+/*diagram.historyChange = function(arg) {
+  getValue();
+};*/
+
+//text box numérique selon le site wiki sans pas de changements, ce types d'éléments n'est pas présent
+/*var stackLimit = new ej.inputs.NumericTextBox({
+  value: 0,
+  min: 0,
+  max: 50,
+  width: "100%",
+  format: "##.##",
+  step: 1,
+  change: function(args) {
+    diagram.setStackLimit(args.value);
+  }
+});
+stackLimit.appendTo("#StackLimit");*/
+
+/*à voir
+var animation = new ej.base.Animation({ duration: 5000 });
+animation.animate("#node14", { name: "FadeOut" });
+
+/*
+var listviewInstance = new ej.lists.ListView({
+  fields: { value: "value", text: "text" },
+  headerTitle: "Device settings",
+  height: "180px"
+});
+listviewInstance.appendTo("#redoList");
+
+var listview = new ej.lists.ListView({
+  fields: { value: "value", text: "text" },
+  headerTitle: "Device settings",
+  height: "180px"
+});
+listview.appendTo("#undoList");
+
+var clearHistory = new ej.buttons.Button({
+  content: "Clear History"
+});
+clearHistory.appendTo("#clearHistory");
+clearHistory.element.onclick = function() {
+  diagram.clearHistory();
+  getValue();
+};
+var startGroupAction = new ej.buttons.Button({
+  isToggle: true
+});
+startGroupAction.appendTo("#startGroupAction");
+startGroupAction.element.onclick = function() {
+  if (startGroupAction.element.classList.contains("e-active")) {
+    startGroupAction.content = "End Group Action";
+    diagram.startGroupAction();
+  } else {
+    diagram.endGroupAction();
+    startGroupAction.content = "Start Group Action";
+  }
+};
+var undoButton = new ej.buttons.Button({
+  disabled: true
+});
+undoButton.appendTo("#undo");
+undoButton.element.onclick = function() {
+  diagram.undo();
+};
+
+var redoButton = new ej.buttons.Button({
+  disabled: true
+});
+redoButton.appendTo("#redo");
+redoButton.element.onclick = function() {
+  diagram.redo();
+};*/
+
+/*function getValue() {
+ /* var undoStack = diagram.historyManager.undoStack;
+  var redoStack = diagram.historyManager.redoStack;
+  var undo = [];
+  for (var i = 0; i < undoStack.length; i++) {
+    undo.push({ text: undoStack[i].type, value: undoStack[i].type });
+  }
+  var redo = [];
+  for (var j = 0; j < redoStack.length; j++) {
+    redo.push({ text: redoStack[j].type, value: redoStack[j].type });
+  }
+  var itemsCount = diagram.historyManager.stackLimit
+    ? diagram.historyManager.stackLimit
+    : 0;
+  var undoList = document.getElementById("undoList").ej2_instances[0];
+
+  undoButton.disabled = undo.length ? false : true;
+  redoButton.disabled = redo.length ? false : true;
+  undoList.dataSource = undo;
+  undoList.fields = { text: "text", value: "text" };
+  undoList.index = 0;
+  undoList.dataBind();
+  var redoList = document.getElementById("redoList").ej2_instances[0];
+  redoList.dataSource = redo;
+  redoList.fields = { text: "text", value: "text" };
+  redoList.index = 0;
+  redoList.dataBind();
+}*/
