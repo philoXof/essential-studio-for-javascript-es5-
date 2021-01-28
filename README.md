@@ -9,3 +9,4 @@ V2 :
 V3 : 
   • Petite exemple de mise en page prise sur w3school *HTML*
   • Ajout de snapSettings pour essayer "d'automatisé" la création des noeud par la suite
+  • Partie d'un diagram avec 3 éléments pour les essais
