@@ -75,12 +75,14 @@
         display: table;
         clear: both;
       }
-
+      p,
+      h2 {
+        text-align: center;
+      }
       /* Style the footer */
       footer {
         background-color: #777;
         padding: 10px;
-        text-align: center;
         color: white;
       }
 
@@ -92,30 +94,33 @@
           height: auto;
         }
       }
+      .tobo {
+        height: 33%;
+      }
     </style>
   </head>
   <body>
-    <h2>CSS Layout Float</h2>
+    <h2>EJ2 diagram JavaScript (ES5)</h2>
     <p>
-      In this example, we have created a header, two columns/boxes and a footer.
-      On smaller screens, the columns will stack on top of each other.
+      Voir le readme.md pour les différentes version
     </p>
     <p>
-      Resize the browser window to see the responsive effect (you will learn
-      more about this in our next chapter - HTML Responsive.)
+      🤷‍♂️
     </p>
 
     <header>
-      <h2>Cities</h2>
+      <h2>Workflow</h2>
     </header>
 
     <section>
       <nav>
-        <ul>
-          <li><a href="#">London</a></li>
-          <li><a href="#">Paris</a></li>
-          <li><a href="#">Tokyo</a></li>
+        <div class="tobo"></div>
+        <ul class="tobo">
+          <li><a href="indexV1.html">V1</a></li>
+          <li><a href="indexV2.html">V2</a></li>
+          <li><a href="index.html">V3</a></li>
         </ul>
+        <div class="tobo"></div>
       </nav>
 
       <article>
