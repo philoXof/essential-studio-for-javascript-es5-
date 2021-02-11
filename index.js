@@ -5,8 +5,152 @@ const sizeNode = 100;
 /////////////////////////////////////////////
 /*                  NODE                   */
 /////////////////////////////////////////////
-
 var node = [
+  {
+    id: "node1",
+    offsetX: 0,
+    offsetY: 200,
+    shape: { type: "Flow", shape: "Terminator" },
+    annotations: [{ id: "label1", content: "Start" }]
+  },
+  {
+    id: "node2",
+    offsetX: 100,
+    offsetY: 200,
+    shape: { type: "Flow", shape: "Process" },
+    annotations: [{ id: "label1", content: "Process" }]
+  },
+  {
+    id: "node3",
+    offsetX: 200,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node4",
+    offsetX: 300,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node5",
+    offsetX: 400,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "1" }],
+    shape: { type: "Flow", shape: "Decision" }
+  },
+
+  {
+    id: "node6",
+    offsetX: 500,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "" }],
+    shape: { type: "Flow", shape: "Or" }
+  },
+  {
+    id: "node7",
+    offsetX: 600,
+    offsetY: 50,
+    annotations: [{ id: "label1", content: "" }],
+    shape: { type: "Flow", shape: "Decision" }
+  },
+  {
+    id: "node8",
+    offsetX: 700,
+    offsetY: 50,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node9",
+    offsetX: 600,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "" }],
+    shape: { type: "Flow", shape: "Or" }
+  },
+  {
+    id: "node10",
+    offsetX: 700,
+    offsetY: 150,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node11",
+    offsetX: 700,
+    offsetY: 250,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node12",
+    offsetX: 600,
+    offsetY: 350,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node13",
+    offsetX: 700,
+    offsetY: 350,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node14",
+    offsetX: 800,
+    offsetY: 200,
+    //style: { fill: "#0f0", strokeColor: "#0f0" }, // ENTIEREMENT VERT (intérieur/contour)
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node15",
+    offsetX: 900,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node16",
+    offsetX: 1000,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node17",
+    offsetX: 1100,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node18",
+    offsetX: 1200,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "" }],
+    shape: { type: "Flow", shape: "Decision" }
+  },
+  {
+    id: "node19",
+    offsetX: 1300,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "Process" }],
+    shape: { type: "Flow", shape: "Process" }
+  },
+  {
+    id: "node20",
+    offsetX: 1400,
+    offsetY: 200,
+    annotations: [{ id: "label1", content: "End" }],
+    shape: { type: "Flow", shape: "Terminator" }
+  }
+];
+
+var nodeEX = [
   //1
   {
     id: "Start",
@@ -90,8 +234,8 @@ diagram = new ej.diagrams.Diagram(
       node.height = sizeNode;
       node.width = sizeNode;
       node.style = {
-        strokeColor: "#f0f",
-        fill: "#f0f"
+        strokeColor: "#FFB2B2",
+        fill: "#DCDCDC"
       };
       return node;
     },
