@@ -2,41 +2,40 @@ ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting);
 var diagram;
 const sizeNode = 60;
 
-
 /////////////////////////////////////////////
 /*                  DATA                   */
 /////////////////////////////////////////////
-var data=[
-{
-    "Name": "node1",
+var data = [
+  {
+    Name: "node1",
     offsetX: 0,
     offsetY: 200,
     shape: { type: "Flow", shape: "Terminator" },
     annotations: [{ content: "Start" }]
   },
   {
-    "Name": "node2",
+    Name: "node2",
     offsetX: 100,
     offsetY: 200,
     shape: { type: "Flow", shape: "Process" },
     annotations: [{ content: "Process" }]
   },
   {
-    "Name": "node3",
+    Name: "node3",
     offsetX: 200,
     offsetY: 200,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node4",
+    Name: "node4",
     offsetX: 300,
     offsetY: 200,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node5",
+    Name: "node5",
     offsetX: 400,
     offsetY: 200,
     annotations: [{ content: "1" }],
@@ -44,63 +43,63 @@ var data=[
   },
 
   {
-    "Name": "node6",
+    Name: "node6",
     offsetX: 500,
     offsetY: 200,
     annotations: [{ content: "" }],
     shape: { type: "Flow", shape: "Or" }
   },
   {
-    "Name": "node7",
+    Name: "node7",
     offsetX: 600,
     offsetY: 50,
     annotations: [{ content: "" }],
     shape: { type: "Flow", shape: "Decision" }
   },
   {
-    "Name": "node8",
+    Name: "node8",
     offsetX: 700,
     offsetY: 50,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node9",
+    Name: "node9",
     offsetX: 600,
     offsetY: 200,
     annotations: [{ content: "" }],
     shape: { type: "Flow", shape: "Or" }
   },
   {
-    "Name": "node10",
+    Name: "node10",
     offsetX: 700,
     offsetY: 150,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node11",
+    Name: "node11",
     offsetX: 700,
     offsetY: 250,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node12",
+    Name: "node12",
     offsetX: 600,
     offsetY: 350,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node13",
+    Name: "node13",
     offsetX: 700,
     offsetY: 350,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node14",
+    Name: "node14",
     offsetX: 800,
     offsetY: 200,
     //style: { fill: "#0f0", strokeColor: "#0f0" }, // ENTIEREMENT VERT (intérieur/contour)
@@ -108,42 +107,42 @@ var data=[
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node15",
+    Name: "node15",
     offsetX: 900,
     offsetY: 200,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node16",
+    Name: "node16",
     offsetX: 1000,
     offsetY: 200,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node17",
+    Name: "node17",
     offsetX: 1100,
     offsetY: 200,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node18",
+    Name: "node18",
     offsetX: 1200,
     offsetY: 200,
     annotations: [{ content: "" }],
     shape: { type: "Flow", shape: "Decision" }
   },
   {
-    "Name": "node19",
+    Name: "node19",
     offsetX: 1300,
     offsetY: 200,
     annotations: [{ content: "Process" }],
     shape: { type: "Flow", shape: "Process" }
   },
   {
-    "Name": "node20",
+    Name: "node20",
     offsetX: 1400,
     offsetY: 200,
     annotations: [
@@ -311,7 +310,7 @@ var nodeEX = [
   //1
   {
     id: "Start",
-   // offsetX: 200,
+    // offsetX: 200,
     //offsetY: 200,
     annotations: [
       {
