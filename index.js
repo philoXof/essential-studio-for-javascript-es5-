@@ -8,155 +8,91 @@ const sizeNode = 60;
 var data = [
   {
     Name: "node1",
-    offsetX: 0,
-    offsetY: 200,
-    shape: { type: "Flow", shape: "Terminator" },
-    annotations: [{ content: "Start" }]
+    ReportingPerson: [""]
   },
   {
     Name: "node2",
-    offsetX: 100,
-    offsetY: 200,
-    shape: { type: "Flow", shape: "Process" },
-    annotations: [{ content: "Process" }]
+    ReportingPerson: ["node1"]
   },
   {
     Name: "node3",
-    offsetX: 200,
-    offsetY: 200,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node2"]
   },
   {
     Name: "node4",
-    offsetX: 300,
-    offsetY: 200,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node3"]
   },
   {
     Name: "node5",
-    offsetX: 400,
-    offsetY: 200,
-    annotations: [{ content: "1" }],
-    shape: { type: "Flow", shape: "Decision" }
+    ReportingPerson: ["node4"]
   },
 
   {
     Name: "node6",
-    offsetX: 500,
-    offsetY: 200,
-    annotations: [{ content: "" }],
-    shape: { type: "Flow", shape: "Or" }
+    ReportingPerson: ["node5"]
   },
   {
     Name: "node7",
-    offsetX: 600,
-    offsetY: 50,
-    annotations: [{ content: "" }],
-    shape: { type: "Flow", shape: "Decision" }
+    ReportingPerson: ["node6"]
   },
   {
     Name: "node8",
-    offsetX: 700,
-    offsetY: 50,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node7"]
   },
   {
     Name: "node9",
-    offsetX: 600,
-    offsetY: 200,
-    annotations: [{ content: "" }],
-    shape: { type: "Flow", shape: "Or" }
+    ReportingPerson: ["node6"]
   },
   {
     Name: "node10",
-    offsetX: 700,
-    offsetY: 150,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node9"]
   },
   {
     Name: "node11",
-    offsetX: 700,
-    offsetY: 250,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node9"]
   },
   {
     Name: "node12",
-    offsetX: 600,
-    offsetY: 350,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node6"]
   },
   {
     Name: "node13",
-    offsetX: 700,
-    offsetY: 350,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node12"]
   },
   {
     Name: "node14",
-    offsetX: 800,
-    offsetY: 200,
-    //style: { fill: "#0f0", strokeColor: "#0f0" }, // ENTIEREMENT VERT (intérieur/contour)
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node10", "node11", "node8", "node13"]
   },
   {
     Name: "node15",
-    offsetX: 900,
-    offsetY: 200,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node14", "node5"]
   },
   {
     Name: "node16",
-    offsetX: 1000,
-    offsetY: 200,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node15"]
   },
   {
     Name: "node17",
-    offsetX: 1100,
-    offsetY: 200,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node16"]
   },
   {
     Name: "node18",
-    offsetX: 1200,
-    offsetY: 200,
-    annotations: [{ content: "" }],
-    shape: { type: "Flow", shape: "Decision" }
+    ReportingPerson: ["node17"]
   },
   {
     Name: "node19",
-    offsetX: 1300,
-    offsetY: 200,
-    annotations: [{ content: "Process" }],
-    shape: { type: "Flow", shape: "Process" }
+    ReportingPerson: ["node18", "node5"]
   },
   {
     Name: "node20",
-    offsetX: 1400,
-    offsetY: 200,
-    annotations: [
-      {
-        content: "End"
-      }
-    ],
-    shape: { type: "Flow", shape: "Terminator" }
+    ReportingPerson: ["node19", "node18"]
   }
 ];
 
 /////////////////////////////////////////////
 /*                  NODE                   */
 /////////////////////////////////////////////
+/*
 var node = [
   {
     id: "node1",
@@ -305,65 +241,13 @@ var node = [
     shape: { type: "Flow", shape: "Terminator" }
   }
 ];
-
-var nodeEX = [
-  //1
-  {
-    id: "Start",
-    // offsetX: 200,
-    //offsetY: 200,
-    annotations: [
-      {
-        content: "Rectangle"
-      }
-    ],
-    shape: { type: "Flow", shape: "Extract" }
-  },
-  //2
-  {
-    id: "End",
-    //offsetX: 500,
-    //offsetY: 500,
-    annotations: [
-      {
-        id: "label2",
-        content: "Triangle"
-      }
-    ],
-    shape: { type: "Flow", shape: "Process" }
-  },
-  //3
-  {
-    id: "coucou",
-    //offsetX: 350,
-    //offsetY: 350,
-    annotations: [
-      {
-        id: "label3",
-        content: "haha"
-      }
-    ],
-    shape: { type: "Flow", shape: "Or" }
-  }
-];
-
-var highlightNode = {
-  id: "coucou",
-  //offsetX: 350,
-  //offsetY: 350,
-  annotations: [
-    {
-      id: "label3",
-      content: "haha"
-    }
-  ],
-  shape: { type: "Flow", shape: "Or" }
-};
+*/
 
 /////////////////////////////////////////////
 /*                CONNECTOR                */
 /////////////////////////////////////////////
 
+/*
 var connector = [
   { id: "connector1", sourceID: "node1", targetID: "node2" },
   { id: "connector2", sourceID: "node2", targetID: "node3" },
@@ -390,7 +274,7 @@ var connector = [
   { id: "connector23", sourceID: "node5", targetID: "node15" },
   { id: "connector24", sourceID: "node5", targetID: "node19" },
   { id: "connector25", sourceID: "node18", targetID: "node20" }
-];
+];*/
 /*var connectorEX = [
   //1
   {
@@ -409,6 +293,7 @@ var connector = [
 /////////////////////////////////////////////
 /*                 DIAGRAM                 */
 /////////////////////////////////////////////
+/*
 diagram = new ej.diagrams.Diagram(
   {
     width: "100%",
@@ -451,6 +336,54 @@ diagram = new ej.diagrams.Diagram(
   },
   "#diagram"
 );
+*/
+
+var items = new ej.data.DataManager(data, new ej.data.Query().take(7));
+
+var diagram = new ej.diagrams.Diagram(
+  {
+    width: "100%",
+    height: "590px",
+    //Uses layout to auto-arrange nodes on the diagram page
+    layout: {
+      //Sets layout type
+      type: "ComplexHierarchicalTree",
+      connectionPointOrigin: ej.diagrams.ConnectionPointOrigin.DifferentPoint,
+      horizontalSpacing: 40,
+      verticalSpacing: 40,
+      horizontalAlignment: "Left",
+      verticalAlignment: "Top",
+      margin: { left: 0, right: 0, top: 0, bottom: 0 },
+      orientation: "TopToBottom"
+    }, //Configures data source for diagram
+    dataSourceSettings: {
+      id: "Name",
+      parentId: "ReportingPerson",
+      dataManager: items
+    }, //Sets the default properties for nodes
+    getNodeDefaults: obj => {
+      obj.width = 40;
+      obj.height = 40;
+      obj.shape = { type: "Basic", shape: "Rectangle", cornerRadius: 7 };
+      obj.style = { fill: "#6BA5D7", strokeColor: "none", strokeWidth: 2 };
+      obj.borderWidth = 1;
+      obj.backgroundColor = "#6BA5D7";
+      return obj;
+    }, //Sets the default properties for and connectors
+    getConnectorDefaults: (connector, diagram) => {
+      connector.type = "Orthogonal";
+      connector.cornerRadius = 7;
+      connector.targetDecorator.height = 7;
+      connector.targetDecorator.width = 7;
+      connector.style = { strokeColor: "#6BA5D7", strokeWidth: 1 };
+      connector.targetDecorator.style.fill = "#6BA5D7";
+      connector.targetDecorator.style.strokeColor = "#6BA5D7";
+      return connector;
+    }
+  },
+  "#diagram"
+);
+diagram.fitToPage({ mode: "Width" });
 
 //
 //
