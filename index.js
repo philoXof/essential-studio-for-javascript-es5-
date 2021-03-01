@@ -339,7 +339,7 @@ diagram = new ej.diagrams.Diagram(
 */
 
 var items = new ej.data.DataManager(data, new ej.data.Query().take(7));
-
+var i = 1;
 var diagram = new ej.diagrams.Diagram(
   {
     width: "100%",
@@ -364,10 +364,23 @@ var diagram = new ej.diagrams.Diagram(
     getNodeDefaults: obj => {
       obj.width = 40;
       obj.height = 40;
-      obj.shape = { type: "Basic", shape: "Rectangle", cornerRadius: 7 };
-      obj.style = { fill: "#6BA5D7", strokeColor: "none", strokeWidth: 2 };
+      console.log(obj.data.Name);
+      obj.shape = {
+        type: "Basic",
+        shape: "Rectangle",
+        cornerRadius: 7,
+        content: obj.data.Name
+      };
       obj.borderWidth = 1;
-      obj.backgroundColor = "#6BA5D7";
+      if (obj.data.Name != "node5") {
+        obj.style = { fill: "#6BA5D7", strokeColor: "none", strokeWidth: 2 };
+        obj.backgroundColor = "#6BA5D7";
+      } else {
+        obj.shape = { type: "Basic", shape: "Rectangle", cornerRadius: 7 };
+        obj.style = { fill: "#0f0", strokeColor: "none", strokeWidth: 2 };
+        obj.backgroundColor = "#0f0";
+      }
+
       return obj;
     }, //Sets the default properties for and connectors
     getConnectorDefaults: (connector, diagram) => {
@@ -375,9 +388,9 @@ var diagram = new ej.diagrams.Diagram(
       connector.cornerRadius = 7;
       connector.targetDecorator.height = 7;
       connector.targetDecorator.width = 7;
-      connector.style = { strokeColor: "#6BA5D7", strokeWidth: 1 };
-      connector.targetDecorator.style.fill = "#6BA5D7";
-      connector.targetDecorator.style.strokeColor = "#6BA5D7";
+      connector.style = { strokeColor: "#000", strokeWidth: 1 };
+      connector.targetDecorator.style.fill = "#000";
+      connector.targetDecorator.style.strokeColor = "#000";
       return connector;
     }
   },
