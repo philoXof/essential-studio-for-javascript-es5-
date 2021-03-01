@@ -343,7 +343,7 @@ var items = new ej.data.DataManager(data, new ej.data.Query().take(7));
 var diagram = new ej.diagrams.Diagram(
   {
     width: "100%",
-    height: "590px",
+    height: "100%",
     //Uses layout to auto-arrange nodes on the diagram page
     layout: {
       //Sets layout type
