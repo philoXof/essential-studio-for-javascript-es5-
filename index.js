@@ -8,84 +8,104 @@ const sizeNode = 60;
 var data = [
   {
     Name: "node1",
-    ReportingPerson: [""]
+    ReportingPerson: [""],
+    ActiveNode: 0
   },
   {
     Name: "node2",
-    ReportingPerson: ["node1"]
+    ReportingPerson: ["node1"],
+    ActiveNode: 0
   },
   {
     Name: "node3",
-    ReportingPerson: ["node2"]
+    ReportingPerson: ["node2"],
+    ActiveNode: 0
   },
   {
     Name: "node4",
-    ReportingPerson: ["node3"]
+    ReportingPerson: ["node3"],
+    ActiveNode: 0
   },
   {
     Name: "node5",
-    ReportingPerson: ["node4"]
+    ReportingPerson: ["node4"],
+    ActiveNode: 0
   },
 
   {
     Name: "node6",
-    ReportingPerson: ["node5"]
+    ReportingPerson: ["node5"],
+    ActiveNode: 0
   },
   {
     Name: "node7",
-    ReportingPerson: ["node6"]
+    ReportingPerson: ["node6"],
+    ActiveNode: 0
   },
   {
     Name: "node8",
-    ReportingPerson: ["node7"]
+    ReportingPerson: ["node7"],
+    ActiveNode: 0
   },
   {
     Name: "node9",
-    ReportingPerson: ["node6"]
+    ReportingPerson: ["node6"],
+    ActiveNode: 1
   },
   {
     Name: "node10",
-    ReportingPerson: ["node9"]
+    ReportingPerson: ["node9"],
+    ActiveNode: 1
   },
   {
     Name: "node11",
-    ReportingPerson: ["node9"]
+    ReportingPerson: ["node9"],
+    ActiveNode: 0
   },
   {
     Name: "node12",
-    ReportingPerson: ["node6"]
+    ReportingPerson: ["node6"],
+    ActiveNode: 0
   },
   {
     Name: "node13",
-    ReportingPerson: ["node12"]
+    ReportingPerson: ["node12"],
+    ActiveNode: 1
   },
   {
     Name: "node14",
-    ReportingPerson: ["node10", "node11", "node8", "node13"]
+    ReportingPerson: ["node10", "node11", "node8", "node13"],
+    ActiveNode: 0
   },
   {
     Name: "node15",
-    ReportingPerson: ["node14", "node5"]
+    ReportingPerson: ["node14", "node5"],
+    ActiveNode: 0
   },
   {
     Name: "node16",
-    ReportingPerson: ["node15"]
+    ReportingPerson: ["node15"],
+    ActiveNode: 0
   },
   {
     Name: "node17",
-    ReportingPerson: ["node16"]
+    ReportingPerson: ["node16"],
+    ActiveNode: 0
   },
   {
     Name: "node18",
-    ReportingPerson: ["node17"]
+    ReportingPerson: ["node17"],
+    ActiveNode: 0
   },
   {
     Name: "node19",
-    ReportingPerson: ["node18", "node5"]
+    ReportingPerson: ["node18", "node5"],
+    ActiveNode: 0
   },
   {
     Name: "node20",
-    ReportingPerson: ["node19", "node18"]
+    ReportingPerson: ["node19", "node18"],
+    ActiveNode: 0
   }
 ];
 
@@ -364,7 +384,7 @@ var diagram = new ej.diagrams.Diagram(
     getNodeDefaults: obj => {
       obj.width = 40;
       obj.height = 40;
-      console.log(obj.data.Name);
+      console.log(obj.data);
       obj.shape = {
         type: "Basic",
         shape: "Rectangle",
@@ -372,7 +392,7 @@ var diagram = new ej.diagrams.Diagram(
         content: obj.data.Name
       };
       obj.borderWidth = 1;
-      if (obj.data.Name != "node5") {
+      if (obj.data.ActiveNode != 1) {
         obj.style = { fill: "#6BA5D7", strokeColor: "none", strokeWidth: 2 };
         obj.backgroundColor = "#6BA5D7";
       } else {
@@ -384,7 +404,7 @@ var diagram = new ej.diagrams.Diagram(
       return obj;
     }, //Sets the default properties for and connectors
     getConnectorDefaults: (connector, diagram) => {
-      connector.type = "Orthogonal";
+      connector.type = "Bezier";
       connector.cornerRadius = 7;
       connector.targetDecorator.height = 7;
       connector.targetDecorator.width = 7;
@@ -392,7 +412,12 @@ var diagram = new ej.diagrams.Diagram(
       connector.targetDecorator.style.fill = "#000";
       connector.targetDecorator.style.strokeColor = "#000";
       return connector;
-    }
+    },
+    constraints:
+      ej.diagrams.DiagramConstraints.Default |
+      ej.diagrams.DiagramConstraints.Bridging |
+      ej.diagrams.NodeConstraints.Shadow,
+    shadow: { angle: 40, opacity: 0.8, distance: 10 }
   },
   "#diagram"
 );
