@@ -14,98 +14,98 @@ var data = [
   {
     Name: "node2",
     ReportingPerson: ["node1"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node3",
     ReportingPerson: ["node2"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node4",
     ReportingPerson: ["node3"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node5",
     ReportingPerson: ["node4"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
 
   {
     Name: "node6",
     ReportingPerson: ["node5"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node7",
     ReportingPerson: ["node6"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node8",
     ReportingPerson: ["node7"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node9",
     ReportingPerson: ["node6"],
-    ActiveNode: 1
+    ActiveNode: "node9"
   },
   {
     Name: "node10",
     ReportingPerson: ["node9"],
-    ActiveNode: 1
+    ActiveNode: "node10"
   },
   {
     Name: "node11",
     ReportingPerson: ["node9"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node12",
     ReportingPerson: ["node6"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node13",
     ReportingPerson: ["node12"],
-    ActiveNode: 1
+    ActiveNode: "node13"
   },
   {
     Name: "node14",
     ReportingPerson: ["node10", "node11", "node8", "node13"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node15",
     ReportingPerson: ["node14", "node5"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node16",
     ReportingPerson: ["node15"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node17",
     ReportingPerson: ["node16"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node18",
     ReportingPerson: ["node17"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node19",
     ReportingPerson: ["node18", "node5"],
-    ActiveNode: 0
+    ActiveNode: ""
   },
   {
     Name: "node20",
     ReportingPerson: ["node19", "node18"],
-    ActiveNode: 0
+    ActiveNode: ""
   }
 ];
 
@@ -368,23 +368,26 @@ var diagram = new ej.diagrams.Diagram(
     layout: {
       //Sets layout type
       type: "ComplexHierarchicalTree",
-      connectionPointOrigin: ej.diagrams.ConnectionPointOrigin.DifferentPoint,
+      //connectionPointOrigin: ej.diagrams.ConnectionPointOrigin.DifferentPoint,
+      arrangement: ChildArrangement.Linear,
       horizontalSpacing: 40,
       verticalSpacing: 40,
-      horizontalAlignment: "Left",
-      verticalAlignment: "Top",
-      margin: { left: 0, right: 0, top: 0, bottom: 0 },
+      //horizontalAlignment: "Left",
+      //verticalAlignment: "Top",
+      //margin: { left: 0, right: 0, top: 0, bottom: 0 },
       orientation: "TopToBottom"
-    }, //Configures data source for diagram
+    },
+
     dataSourceSettings: {
       id: "Name",
       parentId: "ReportingPerson",
       dataManager: items
-    }, //Sets the default properties for nodes
+    },
+
     getNodeDefaults: obj => {
       obj.width = 40;
       obj.height = 40;
-      console.log(obj.data);
+      //console.log(obj.data);
       obj.shape = {
         type: "Basic",
         shape: "Rectangle",
@@ -392,7 +395,7 @@ var diagram = new ej.diagrams.Diagram(
         content: obj.data.Name
       };
       obj.borderWidth = 1;
-      if (obj.data.ActiveNode != 1) {
+      if (obj.data.ActiveNode != obj.data.Name) {
         obj.style = { fill: "#6BA5D7", strokeColor: "none", strokeWidth: 2 };
         obj.backgroundColor = "#6BA5D7";
       } else {
@@ -403,6 +406,7 @@ var diagram = new ej.diagrams.Diagram(
 
       return obj;
     }, //Sets the default properties for and connectors
+
     getConnectorDefaults: (connector, diagram) => {
       connector.type = "Bezier";
       connector.cornerRadius = 7;
@@ -413,10 +417,12 @@ var diagram = new ej.diagrams.Diagram(
       connector.targetDecorator.style.strokeColor = "#000";
       return connector;
     },
+
     constraints:
       ej.diagrams.DiagramConstraints.Default |
       ej.diagrams.DiagramConstraints.Bridging |
-      ej.diagrams.NodeConstraints.Shadow,
+      //ej.diagrams.DiagramConstraints.LineRouting,
+      ej.diagrams.DiagramConstraints.Tooltip,
     shadow: { angle: 40, opacity: 0.8, distance: 10 }
   },
   "#diagram"
