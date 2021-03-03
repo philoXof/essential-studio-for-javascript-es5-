@@ -368,14 +368,13 @@ var diagram = new ej.diagrams.Diagram(
     layout: {
       //Sets layout type
       type: "ComplexHierarchicalTree",
-      //connectionPointOrigin: ej.diagrams.ConnectionPointOrigin.DifferentPoint,
-      arrangement: ChildArrangement.Linear,
+      connectionPointOrigin: ej.diagrams.ConnectionPointOrigin.DifferentPoint,
       horizontalSpacing: 40,
       verticalSpacing: 40,
-      //horizontalAlignment: "Left",
-      //verticalAlignment: "Top",
-      //margin: { left: 0, right: 0, top: 0, bottom: 0 },
-      orientation: "TopToBottom"
+      horizontalAlignment: "Center",
+      verticalAlignment: "Top",
+      margin: { left: 0, right: 0, top: 0, bottom: 0 },
+      orientation: "LeftToRight"
     },
 
     dataSourceSettings: {
