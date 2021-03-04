@@ -16,116 +16,116 @@ var data = [
     Name: "node2",
     ReportingNode: ["node1"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node3",
     ReportingNode: ["node2"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node4",
     ReportingNode: ["node3"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node5",
     ReportingNode: ["node4"],
     ActiveNode: "",
-    shape: ""
+    shape: "Decision"
   },
 
   {
     Name: "node6",
     ReportingNode: ["node5"],
     ActiveNode: "",
-    shape: ""
+    shape: "Or"
   },
   {
     Name: "node7",
     ReportingNode: ["node6"],
     ActiveNode: "",
-    shape: ""
+    shape: "Decision"
   },
   {
     Name: "node8",
     ReportingNode: ["node7"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node9",
     ReportingNode: ["node6"],
     ActiveNode: "node9",
-    shape: ""
+    shape: "Or"
   },
   {
     Name: "node10",
     ReportingNode: ["node9"],
     ActiveNode: "node10",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node11",
     ReportingNode: ["node9"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node12",
     ReportingNode: ["node6"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node13",
     ReportingNode: ["node12"],
     ActiveNode: "node13",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node14",
     ReportingNode: ["node10", "node11", "node8", "node13"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node15",
     ReportingNode: ["node14", "node5"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node16",
     ReportingNode: ["node15"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node17",
     ReportingNode: ["node16"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node18",
     ReportingNode: ["node17"],
     ActiveNode: "",
-    shape: ""
+    shape: "Decision"
   },
   {
     Name: "node19",
     ReportingNode: ["node18", "node5"],
     ActiveNode: "",
-    shape: ""
+    shape: "Process"
   },
   {
     Name: "node20",
     ReportingNode: ["node19", "node18"],
     ActiveNode: "",
-    shape: ""
+    shape: "Terminator"
   }
 ];
 
@@ -404,36 +404,32 @@ var diagram = new ej.diagrams.Diagram(
     },
 
     getNodeDefaults: obj => {
-      //obj.width = 40;
-      //obj.height = 40;
-      //console.log(obj.data);
-      obj.shape = {
-        type: "Basic",
-        shape: "Rectangle",
-        cornerRadius: 7,
-        content: obj.data.Name
-      };
+      obj.width = 40;
+      obj.height = 40;
       obj.borderWidth = 1;
+      obj.annotations = { content: obj.data.Name };
+      obj.shape = {
+        type: "Flow",
+        shape: obj.data.shape,
+        cornerRadius: 7
+        //content: obj.data.Name
+      };
+
       if (obj.data.ActiveNode != obj.data.Name) {
-        obj.style = { fill: "#6BA5D7", strokeColor: "none", strokeWidth: 2 };
-        obj.backgroundColor = "#6BA5D7";
-      } else {
-        obj.shape = {
-          type: "Flow",
-          shape: obj.data.shape,
-          cornerRadius: 7
+        obj.style = {
+          fill: "#6BA5D7",
+          strokeColor: "none",
+          strokeWidth: 2
         };
+      } else {
         obj.style = {
           fill: "#0f0",
           strokeColor: "none",
-          strokeWidth: 2,
-          content: "coucou"
+          strokeWidth: 2
         };
-        obj.backgroundColor = "#0f0";
       }
-
       return obj;
-    }, //Sets the default properties for and connectors
+    },
 
     getConnectorDefaults: (connector, diagram) => {
       connector.type = "Bezier";
