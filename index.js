@@ -8,104 +8,124 @@ const sizeNode = 60;
 var data = [
   {
     Name: "node1",
-    ReportingPerson: [""],
-    ActiveNode: 0
+    ReportingNode: [""],
+    ActiveNode: 0,
+    shape: "Terminator"
   },
   {
     Name: "node2",
-    ReportingPerson: ["node1"],
-    ActiveNode: ""
+    ReportingNode: ["node1"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node3",
-    ReportingPerson: ["node2"],
-    ActiveNode: ""
+    ReportingNode: ["node2"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node4",
-    ReportingPerson: ["node3"],
-    ActiveNode: ""
+    ReportingNode: ["node3"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node5",
-    ReportingPerson: ["node4"],
-    ActiveNode: ""
+    ReportingNode: ["node4"],
+    ActiveNode: "",
+    shape: ""
   },
 
   {
     Name: "node6",
-    ReportingPerson: ["node5"],
-    ActiveNode: ""
+    ReportingNode: ["node5"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node7",
-    ReportingPerson: ["node6"],
-    ActiveNode: ""
+    ReportingNode: ["node6"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node8",
-    ReportingPerson: ["node7"],
-    ActiveNode: ""
+    ReportingNode: ["node7"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node9",
-    ReportingPerson: ["node6"],
-    ActiveNode: "node9"
+    ReportingNode: ["node6"],
+    ActiveNode: "node9",
+    shape: ""
   },
   {
     Name: "node10",
-    ReportingPerson: ["node9"],
-    ActiveNode: "node10"
+    ReportingNode: ["node9"],
+    ActiveNode: "node10",
+    shape: ""
   },
   {
     Name: "node11",
-    ReportingPerson: ["node9"],
-    ActiveNode: ""
+    ReportingNode: ["node9"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node12",
-    ReportingPerson: ["node6"],
-    ActiveNode: ""
+    ReportingNode: ["node6"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node13",
-    ReportingPerson: ["node12"],
-    ActiveNode: "node13"
+    ReportingNode: ["node12"],
+    ActiveNode: "node13",
+    shape: ""
   },
   {
     Name: "node14",
-    ReportingPerson: ["node10", "node11", "node8", "node13"],
-    ActiveNode: ""
+    ReportingNode: ["node10", "node11", "node8", "node13"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node15",
-    ReportingPerson: ["node14", "node5"],
-    ActiveNode: ""
+    ReportingNode: ["node14", "node5"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node16",
-    ReportingPerson: ["node15"],
-    ActiveNode: ""
+    ReportingNode: ["node15"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node17",
-    ReportingPerson: ["node16"],
-    ActiveNode: ""
+    ReportingNode: ["node16"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node18",
-    ReportingPerson: ["node17"],
-    ActiveNode: ""
+    ReportingNode: ["node17"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node19",
-    ReportingPerson: ["node18", "node5"],
-    ActiveNode: ""
+    ReportingNode: ["node18", "node5"],
+    ActiveNode: "",
+    shape: ""
   },
   {
     Name: "node20",
-    ReportingPerson: ["node19", "node18"],
-    ActiveNode: ""
+    ReportingNode: ["node19", "node18"],
+    ActiveNode: "",
+    shape: ""
   }
 ];
 
@@ -369,23 +389,23 @@ var diagram = new ej.diagrams.Diagram(
       //Sets layout type
       type: "ComplexHierarchicalTree",
       connectionPointOrigin: ej.diagrams.ConnectionPointOrigin.DifferentPoint,
-      horizontalSpacing: 40,
-      verticalSpacing: 40,
+      horizontalSpacing: 50,
+      verticalSpacing: 50,
       horizontalAlignment: "Center",
-      verticalAlignment: "Top",
-      margin: { left: 0, right: 0, top: 0, bottom: 0 },
+      verticalAlignment: "Center",
+      //margin: { left: 0, right: 0, top: 0, bottom: 0 },
       orientation: "LeftToRight"
     },
 
     dataSourceSettings: {
       id: "Name",
-      parentId: "ReportingPerson",
+      parentId: "ReportingNode",
       dataManager: items
     },
 
     getNodeDefaults: obj => {
-      obj.width = 40;
-      obj.height = 40;
+      //obj.width = 40;
+      //obj.height = 40;
       //console.log(obj.data);
       obj.shape = {
         type: "Basic",
@@ -398,8 +418,17 @@ var diagram = new ej.diagrams.Diagram(
         obj.style = { fill: "#6BA5D7", strokeColor: "none", strokeWidth: 2 };
         obj.backgroundColor = "#6BA5D7";
       } else {
-        obj.shape = { type: "Basic", shape: "Rectangle", cornerRadius: 7 };
-        obj.style = { fill: "#0f0", strokeColor: "none", strokeWidth: 2 };
+        obj.shape = {
+          type: "Flow",
+          shape: obj.data.shape,
+          cornerRadius: 7
+        };
+        obj.style = {
+          fill: "#0f0",
+          strokeColor: "none",
+          strokeWidth: 2,
+          content: "coucou"
+        };
         obj.backgroundColor = "#0f0";
       }
 

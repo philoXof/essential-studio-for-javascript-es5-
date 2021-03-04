@@ -1,7 +1,7 @@
 # ijt8yw
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/ijt8yw)
-**  IndexJS & IndexHTML **
+**IndexJS & IndexHTML**
 V1 :
   • Diagram seul avec undo redo
 V2 :
