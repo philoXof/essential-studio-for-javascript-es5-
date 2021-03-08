@@ -150,6 +150,7 @@ var diagram = new ej.diagrams.Diagram(
     layout: {
       type: "ComplexHierarchicalTree",
       connectionPointOrigin: ej.diagrams.ConnectionPointOrigin.DifferentPoint,
+
       horizontalSpacing: 50,
       verticalSpacing: 50,
       horizontalAlignment: "Left",
@@ -168,13 +169,13 @@ var diagram = new ej.diagrams.Diagram(
       obj.width = 50;
       obj.height = 50;
       obj.borderWidth = 10;
-      obj.annotations = { content: obj.data.Name };
+      //obj.annotations = { content: obj.data.Name };
 
       obj.shape = {
         type: "Flow",
         shape: obj.data.shape,
-        cornerRadius: 7
-        //content: obj.data.Name
+        cornerRadius: 7,
+        annotations: { id: "label1", content: "obj.data.Name" }
       };
       obj.constraints =
         //ej.diagrams.NodeConstraints.Default |
@@ -205,6 +206,8 @@ var diagram = new ej.diagrams.Diagram(
       connector.style = { strokeColor: "#000", strokeWidth: 1 };
       connector.targetDecorator.style.fill = "#c8d400";
       connector.targetDecorator.style.strokeColor = "#000";
+      connector.bridgeSpace = 20;
+      diagram.bridgeDirection = "Top";
       /*connector.constraints = {
         constraints:
           ej.diagrams.ConnectorConstraints.Default |
