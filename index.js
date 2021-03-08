@@ -124,7 +124,15 @@ var data = [
     shape: "Terminator"
   }
 ];
-data.concat(Array[("node21", ["node1", "node2"], "node21", "Process")]);
+var tabnew = [
+  {
+    Name: "node21",
+    ReportingNode: ["node1", "node2"],
+    ActiveNode: "node21",
+    shape: "Data"
+  }
+];
+data.concat(tabnew);
 
 /////////////////////////////////////////////
 /*                 DIAGRAM                 */
@@ -160,7 +168,8 @@ var diagram = new ej.diagrams.Diagram(
       obj.width = 50;
       obj.height = 50;
       obj.borderWidth = 1;
-      //obj.annotations = { content: obj.data.Name };
+      //obj.annotations = {annotations=[ content: obj.data.Name,] };
+
       obj.shape = {
         type: "Flow",
         shape: obj.data.shape,
@@ -216,24 +225,3 @@ var diagram = new ej.diagrams.Diagram(
   "#diagram"
 );
 diagram.fitToPage({ mode: "Width" });
-
-//
-//
-//
-
-//CONTRAITES POUR DESACTIVER L'INTERACTION A VOIR SI ON PEUT FIAR EN SORTE DE FAIRE CA AVEC LES CONNECTORS AUSSI, car la on désactive tout les tools donc aussi la parti connector
-
-//
-//
-//
-
-/*constraints:
-      /*ej.diagrams.NodeConstraints.None | * / ej.diagrams.NodeConstraints,
-    shadow: { angle: 40, opacity: 0.8, distance: 6 }*/
-// ne peux pas interagir avec ce noeud !
-
-/* constraints:
-      /*ej.diagrams.NodeConstraints.None |* /
-      ej.diagrams.NodeConstraints.Shadow &
-      ~ej.diagrams.NodeConstraints.InConnect,
-    shadow: { angle: 40, opacity: 0.8, distance: 6 }*/
