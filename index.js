@@ -201,13 +201,22 @@ var diagram = new ej.diagrams.Diagram(
     getConnectorDefaults: (connector, diagram) => {
       connector.type = "Bezier";
       connector.cornerRadius = 10;
-      connector.targetDecorator.height = 7;
-      connector.targetDecorator.width = 7;
       connector.style = { strokeColor: "#000", strokeWidth: 1 };
+
+      connector.targetDecorator.height = 8;
+      connector.targetDecorator.width = 8;
       connector.targetDecorator.style.fill = "#c8d400";
       connector.targetDecorator.style.strokeColor = "#000";
+      connector.targetDecorator = { shape: "OutdentedArrow" };
       connector.bridgeSpace = 20;
+
+      connector.sourceDecorator.height = 6;
+      connector.sourceDecorator.width = 6;
+      connector.sourceDecorator = { shape: "Circle" };
+      connector.sourceDecorator.style.fill = "#c8d400";
+
       diagram.bridgeDirection = "Top";
+      //diagram.BranchTypes = "Left";
       /*connector.constraints = {
         constraints:
           ej.diagrams.ConnectorConstraints.Default |
