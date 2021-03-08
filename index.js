@@ -152,7 +152,7 @@ var diagram = new ej.diagrams.Diagram(
       connectionPointOrigin: ej.diagrams.ConnectionPointOrigin.DifferentPoint,
       horizontalSpacing: 50,
       verticalSpacing: 50,
-      horizontalAlignment: "Center",
+      horizontalAlignment: "Left",
       verticalAlignment: "Center",
       margin: { left: 0, right: 0, top: 0, bottom: 0 },
       orientation: "LeftToRight"
@@ -167,14 +167,14 @@ var diagram = new ej.diagrams.Diagram(
     getNodeDefaults: obj => {
       obj.width = 50;
       obj.height = 50;
-      obj.borderWidth = 1;
-      obj.annotations = { id: "label1", content: obj.data.Name };
+      obj.borderWidth = 10;
+      obj.annotations = { content: obj.data.Name };
 
       obj.shape = {
         type: "Flow",
         shape: obj.data.shape,
-        cornerRadius: 7,
-        content: obj.data.Name
+        cornerRadius: 7
+        //content: obj.data.Name
       };
       obj.constraints =
         //ej.diagrams.NodeConstraints.Default |
