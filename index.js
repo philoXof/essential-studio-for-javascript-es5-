@@ -168,7 +168,7 @@ var diagram = new ej.diagrams.Diagram(
       obj.width = 50;
       obj.height = 50;
       obj.borderWidth = 1;
-      //obj.annotations = {annotations=[ content: obj.data.Name,] };
+      obj.annotations = { id: "label1", content: obj.data.Name };
 
       obj.shape = {
         type: "Flow",
@@ -176,37 +176,41 @@ var diagram = new ej.diagrams.Diagram(
         cornerRadius: 7,
         content: obj.data.Name
       };
-
+      obj.constraints =
+        //ej.diagrams.NodeConstraints.Default |
+        ej.diagrams.NodeConstraints.Shadow |
+        ~ej.diagrams.NodeConstraints.Select;
       if (obj.data.ActiveNode != obj.data.Name) {
         obj.style = {
-          fill: "#6BA5D7",
+          fill: "#003b4c",
           strokeColor: "none",
           strokeWidth: 2
         };
       } else {
         obj.style = {
-          fill: "#0f0",
+          fill: "#00a75f",
           strokeColor: "none",
           strokeWidth: 2
         };
       }
+      //shadow = { angle: 40, opacity: 0.8, distance: 10 };
       return obj;
     },
 
     getConnectorDefaults: (connector, diagram) => {
-      /*connector.constraints = {
-        constraints:
-          ej.diagrams.ConnectorConstraints.Default |
-          (ej.diagrams.ConnectorConstraints.ReadOnly &
-            ~ej.diagrams.ConnectorConstraints.Select)
-      };*/
       connector.type = "Bezier";
       connector.cornerRadius = 10;
       connector.targetDecorator.height = 7;
       connector.targetDecorator.width = 7;
       connector.style = { strokeColor: "#000", strokeWidth: 1 };
-      connector.targetDecorator.style.fill = "#000";
+      connector.targetDecorator.style.fill = "#c8d400";
       connector.targetDecorator.style.strokeColor = "#000";
+      /*connector.constraints = {
+        constraints:
+          ej.diagrams.ConnectorConstraints.Default |
+          ej.diagrams.ConnectorConstraints.LineRouting |
+          ~ej.diagrams.ConnectorConstraints.Select
+      };*/
       return connector;
     },
 
@@ -214,9 +218,7 @@ var diagram = new ej.diagrams.Diagram(
       ej.diagrams.DiagramConstraints.Default |
       ej.diagrams.DiagramConstraints.Tooltip |
       ej.diagrams.DiagramConstraints.Bridging |
-      ej.diagrams.DiagramConstraints.LineRouting |
-      ej.diagrams.NodeConstraints.Shadow,
-    shadow: { angle: 40, opacity: 0.8, distance: 10 },
+      ej.diagrams.DiagramConstraints.LineRouting,
     snapSettings: {
       constraints: ej.diagrams.SnapConstraints.None
     }
