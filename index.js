@@ -1,3 +1,5 @@
+ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting);
+
 /////////////////////////////////////////////
 /*                  DATA                   */
 /////////////////////////////////////////////
@@ -7,13 +9,10 @@ var data = [
     ReportingNode: [""],
     ActiveNode: 0,
     shape: "Terminator"
-  },
-  {
-    Name: "node2",
-    ReportingNode: ["node1"],
-    ActiveNode: "",
-    shape: "Process"
-  },
+  }
+];
+addNode("node2", ["node1"], "", "Process");
+data.push(
   {
     Name: "node3",
     ReportingNode: ["node2"],
@@ -123,25 +122,33 @@ var data = [
     ActiveNode: "",
     shape: "Terminator"
   }
-];
-var tabnew = [
-  {
-    Name: "node21",
-    ReportingNode: ["node1", "node2"],
-    ActiveNode: "node21",
-    shape: "Data"
+);
+
+//addNode("node21", ["node1", "node2"], "node21", "Data");
+
+/*class DataTest {
+  Name = "";
+  ReportingNode = [""];
+  ActiveNode = "";
+  shape = "";
+  constructor(Name, ReportingNode, ActiveNode, shape) {
+    this.Name = Name;
+    this.ReportingNode = ReportingNode;
+    this.ActiveNode = ActiveNode;
+    this.shape = shape;
   }
-];
-//data.concat(tabnew);
+}
+
+ArrayList < DataTest > dataList; //= new ArrayList<DataTest>();
+dataList.add("1", ["1", "2"], "1", "1");
+dataList.add("2", ["2", "3"], "2", "2");
+console.log(dataList);*/
 
 /////////////////////////////////////////////
 /*                 DIAGRAM                 */
 /////////////////////////////////////////////
 
 var items = new ej.data.DataManager(data, new ej.data.Query().take(7));
-var items2 = new ej.data.DataManager(tabnew, new ej.data.Query().take(7));
-
-ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting);
 
 var diagram = new ej.diagrams.Diagram(
   {
@@ -163,8 +170,7 @@ var diagram = new ej.diagrams.Diagram(
     dataSourceSettings: {
       id: "Name",
       parentId: "ReportingNode",
-      dataManager: items,
-      items2
+      dataManager: items //,items2
     },
 
     getNodeDefaults: obj => {
@@ -222,23 +228,26 @@ var diagram = new ej.diagrams.Diagram(
       connector.sourceDecorator.width = 6;
       connector.sourceDecorator = { shape: "Circle" };
       connector.sourceDecorator.style.fill = "#c8d400";
-
       diagram.bridgeDirection = "Top";
       //diagram.BranchTypes = "Left";
       /*connector.constraints = {
-        constraints:
+        constraints: ej.diagrams.ConnectorConstraints.InheritBridging
+        
           ej.diagrams.ConnectorConstraints.Default |
           ej.diagrams.ConnectorConstraints.LineRouting |
           ~ej.diagrams.ConnectorConstraints.Select
+          
       };*/
       return connector;
     },
 
     constraints:
-      ej.diagrams.DiagramConstraints.Default |
+      //ej.diagrams.DiagramConstraints.Default |
       ej.diagrams.DiagramConstraints.Tooltip |
+      ej.diagrams.DiagramConstraints.Zoom |
       ej.diagrams.DiagramConstraints.Bridging |
-      ej.diagrams.DiagramConstraints.LineRouting,
+      ej.diagrams.DiagramConstraints.LineRouting, //|
+    //~ej.diagrams.DiagramConstraints.UserInteraction,
     snapSettings: {
       constraints: ej.diagrams.SnapConstraints.None
     }
@@ -247,3 +256,13 @@ var diagram = new ej.diagrams.Diagram(
   "#diagram"
 );
 diagram.fitToPage({ mode: "Width" });
+
+function addNode(nodeName, nodeReportingNode, nodeActiveNode, nodeshape) {
+  //console.log(Name + ReportingNode + ActiveNode + shape);
+  data.push({
+    Name: nodeName,
+    ReportingNode: nodeReportingNode,
+    ActiveNode: nodeActiveNode,
+    shape: nodeshape
+  });
+}
