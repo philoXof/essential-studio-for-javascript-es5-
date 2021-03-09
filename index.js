@@ -132,13 +132,14 @@ var tabnew = [
     shape: "Data"
   }
 ];
-data.concat(tabnew);
+//data.concat(tabnew);
 
 /////////////////////////////////////////////
 /*                 DIAGRAM                 */
 /////////////////////////////////////////////
 
 var items = new ej.data.DataManager(data, new ej.data.Query().take(7));
+var items2 = new ej.data.DataManager(tabnew, new ej.data.Query().take(7));
 
 ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting);
 
@@ -162,25 +163,32 @@ var diagram = new ej.diagrams.Diagram(
     dataSourceSettings: {
       id: "Name",
       parentId: "ReportingNode",
-      dataManager: items
+      dataManager: items,
+      items2
     },
 
     getNodeDefaults: obj => {
       obj.width = 50;
       obj.height = 50;
       obj.borderWidth = 10;
-      //obj.annotations = { content: obj.data.Name };
+      obj.annotations = [
+        {
+          id: "label1",
+          content: obj.data.Name,
+          style: { textWrapping: "Wrap", color: "white" }
+        }
+      ];
 
       obj.shape = {
         type: "Flow",
         shape: obj.data.shape,
-        cornerRadius: 7,
-        annotations: { id: "label1", content: "obj.data.Name" }
+        cornerRadius: 7
       };
+
       obj.constraints =
-        //ej.diagrams.NodeConstraints.Default |
         ej.diagrams.NodeConstraints.Shadow |
-        ~ej.diagrams.NodeConstraints.Select;
+        ~ej.diagrams.NodeConstraints.Select |
+        ej.diagrams.NodeConstraints.Tooltip;
       if (obj.data.ActiveNode != obj.data.Name) {
         obj.style = {
           fill: "#003b4c",
