@@ -99,26 +99,32 @@ data.push(
     shape: "Process"
   },
   {
-    Name: "node17",
+    Name: "17",
     ReportingNode: ["node16"],
     ActiveNode: "",
     shape: "Process"
   },
   {
     Name: "node18",
-    ReportingNode: ["node17"],
-    ActiveNode: "",
-    shape: "Decision"
-  },
-  {
-    Name: "node19",
-    ReportingNode: ["node18", "node5"],
+    ReportingNode: ["17"],
     ActiveNode: "",
     shape: "Process"
   },
   {
+    Name: "node19",
+    ReportingNode: ["node18"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+  {
     Name: "node20",
-    ReportingNode: ["node19", "node18"],
+    ReportingNode: ["node19", "node5"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node21",
+    ReportingNode: ["node20", "node19"],
     ActiveNode: "",
     shape: "Terminator"
   }
