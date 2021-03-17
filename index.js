@@ -3,7 +3,7 @@ ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting);
 /////////////////////////////////////////////
 /*                  DATA                   */
 /////////////////////////////////////////////
-var data = [
+/*var data = [
   {
     Name: "node1",
     ReportingNode: [""],
@@ -128,27 +128,207 @@ data.push(
     ActiveNode: "",
     shape: "Terminator"
   }
-);
+);*/
+var data = [
+  {
+    Name: "Process Start",
+    ReportingNode: [""],
+    ActiveNode: "",
+    shape: "Terminator"
+  },
+  {
+    Name: "InitCustomProps and Fill Start Date",
+    ReportingNode: ["Process Start"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Rename Workflow",
+    ReportingNode: ["InitCustomProps and Fill Start Date"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Update Vendor DueDate",
+    ReportingNode: ["Rename Workflow"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "If own review",
+    ReportingNode: ["Update Vendor DueDate"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+  {
+    Name: "Decision Group01 Rendezvous",
+    ReportingNode: ["If own review"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+  {
+    Name: "Parallel Group02 Point",
+    ReportingNode: ["Decision Group01 Rendezvous"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Sequence Group02 Point",
+    ReportingNode: ["Parallel Group02 Point"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Decision Group02 Point",
+    ReportingNode: ["Sequence Group02 Point"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+  {
+    Name: "Decision Group02 Rendezvous",
+    ReportingNode: ["Decision Group02 Point"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+  {
+    Name: "DC Follow-up",
+    ReportingNode: ["Decision Group02 Rendezvous"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Sequence Group02 Rendezvous",
+    ReportingNode: ["DC Follow-up", "Decision Group02 Point"],
+    ActiveNode: "",
+    shape: "SequentialAccessStorage"
+  },
+  {
+    Name: "Sequence Group01 Point",
+    ReportingNode: ["Parallel Group02 Point"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Parallel Group01 Point",
+    ReportingNode: ["Sequence Group01 Point"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "External Review",
+    ReportingNode: ["Parallel Group01 Point"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Internal Review",
+    ReportingNode: ["Parallel Group01 Point"],
+    ActiveNode: "Internal Review",
+    shape: "Process"
+  },
+  {
+    Name: "Parallel Group01 Rendezvous",
+    ReportingNode: ["External Review", "Internal Review"],
+    ActiveNode: "Parallel Group01 Rendezvous",
+    shape: "SequentialAccessStorage"
+  },
+  {
+    Name: "Unassign Reviewers",
+    ReportingNode: ["Parallel Group01 Rendezvous"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Sequence Group01 Rendezvous",
+    ReportingNode: ["Unassign Reviewers"],
+    ActiveNode: "",
+    shape: "SequentialAccessStorage"
+  },
+  {
+    Name: "Sequence Group03 Point",
+    ReportingNode: ["Parallel Group02 Point"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Follow-up",
+    ReportingNode: ["Sequence Group03 Point"],
+    ActiveNode: "Follow-up",
+    shape: "Process"
+  },
+  {
+    Name: "ValidateRIFollowUp",
+    ReportingNode: ["Follow-up"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Sequence Group03 Rendezvous",
+    ReportingNode: ["ValidateRIFollowUp"],
+    ActiveNode: "",
+    shape: "SequentialAccessStorage"
+  },
+  {
+    Name: "Parallel Group02 Rendezvous",
+    ReportingNode: [
+      "Sequence Group02 Rendezvous",
+      "Sequence Group01 Rendezvous",
+      "Sequence Group03 Rendezvous"
+    ],
+    ActiveNode: "Parallel Group02 Rendezvous",
+    shape: "SequentialAccessStorage"
+  },
+  {
+    Name: "RI Comment Container",
+    ReportingNode: ["Parallel Group02 Rendezvous", "If own review"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Comments Consolidation",
+    ReportingNode: ["RI Comment Container"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Update Comments",
+    ReportingNode: ["Comments Consolidation"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Update States and End Date",
+    ReportingNode: ["Update Comments"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Decision Group07 Point",
+    ReportingNode: ["Update States and End Date"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+  {
+    Name: "Decision Group07 Rendezvous",
+    ReportingNode: ["Decision Group07 Point"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+  {
+    Name: "Error_Notification",
+    ReportingNode: ["Decision Group07 Rendezvous", "If own review"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "Process End",
+    ReportingNode: ["Error_Notification", "Decision Group07 Point"],
+    ActiveNode: "",
+    shape: "Terminator"
+  }
+];
 
 //addNode("node21", ["node1", "node2"], "node21", "Data");
-
-/*class DataTest {
-  Name = "";
-  ReportingNode = [""];
-  ActiveNode = "";
-  shape = "";
-  constructor(Name, ReportingNode, ActiveNode, shape) {
-    this.Name = Name;
-    this.ReportingNode = ReportingNode;
-    this.ActiveNode = ActiveNode;
-    this.shape = shape;
-  }
-}
-
-ArrayList < DataTest > dataList; //= new ArrayList<DataTest>();
-dataList.add("1", ["1", "2"], "1", "1");
-dataList.add("2", ["2", "3"], "2", "2");
-console.log(dataList);*/
 
 /////////////////////////////////////////////
 /*                 DIAGRAM                 */
@@ -180,8 +360,8 @@ var diagram = new ej.diagrams.Diagram(
     },
 
     getNodeDefaults: obj => {
-      obj.width = 50;
-      obj.height = 50;
+      obj.width = 100;
+      obj.height = 100;
       obj.borderWidth = 10;
       obj.annotations = [
         {
