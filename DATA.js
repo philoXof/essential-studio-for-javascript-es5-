@@ -312,3 +312,101 @@ var data = [
     shape: "Terminator"
   }
 ];
+
+/*
+Process Start
+ProcessStart
+
+InitCustomProps and Fill Start Date
+Activity  = carrée
+
+Rename Workflow
+Activity  = carrée
+
+Update Vendor DueDate
+Activity  = carrée
+
+If own review
+DecisionPoint
+
+Decision Group01 Rendezvous
+DecisionRendezvous
+
+Parallel Group02 Point
+ParallelPoint
+
+Sequence Group02 Point
+SequencePoint
+
+Decision Group02 Point
+DecisionPoint
+
+Decision Group02 Rendezvous
+DecisionRendezvous
+
+DC Follow-up
+Activity  = carrée
+
+Sequence Group02 Rendezvous
+SequenceRendezvous
+
+Sequence Group01 Point
+SequencePoint
+
+Parallel Group01 Point
+ParallelPoint
+
+External Review
+Activity  = carrée
+
+Internal Review
+Activity  = carrée
+
+Parallel Group01 Rendezvous
+ParallelRendezvous
+
+Unassign Reviewers
+Activity  = carrée
+
+Sequence Group01 Rendezvous
+SequenceRendezvous
+
+Sequence Group03 Point
+SequencePoint
+
+Follow-up
+Activity  = carrée
+
+ValidateRIFollowUp
+Activity  = carrée
+
+Sequence Group03 Rendezvous
+SequenceRendezvous
+
+Parallel Group02 Rendezvous
+ParallelRendezvous
+
+RI Comment Container
+Activity  = carrée
+
+Comments Consolidation
+Activity  = carrée
+
+Update Comments
+Activity  = carrée
+
+Update States and End Date
+Activity  = carrée
+
+Decision Group07 Point
+DecisionPoint
+
+Decision Group07 Rendezvous
+DecisionRendezvous
+
+Error_Notification
+Activity  = carrée
+
+Process End
+ProcessEnd
+*/
