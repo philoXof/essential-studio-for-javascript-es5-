@@ -170,13 +170,13 @@ var data = [
     Name: "Parallel Group02 Point",
     ReportingNode: ["Decision Group01 Rendezvous"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Or"
   },
   {
     Name: "Sequence Group02 Point",
     ReportingNode: ["Parallel Group02 Point"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "SummingJunction"
   },
   {
     Name: "Decision Group02 Point",
@@ -200,19 +200,19 @@ var data = [
     Name: "Sequence Group02 Rendezvous",
     ReportingNode: ["DC Follow-up", "Decision Group02 Point"],
     ActiveNode: "",
-    shape: "SequentialAccessStorage"
+    shape: "SummingJunction"
   },
   {
     Name: "Sequence Group01 Point",
     ReportingNode: ["Parallel Group02 Point"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "SummingJunction"
   },
   {
     Name: "Parallel Group01 Point",
     ReportingNode: ["Sequence Group01 Point"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Or"
   },
   {
     Name: "External Review",
@@ -230,7 +230,7 @@ var data = [
     Name: "Parallel Group01 Rendezvous",
     ReportingNode: ["External Review", "Internal Review"],
     ActiveNode: "Parallel Group01 Rendezvous",
-    shape: "SequentialAccessStorage"
+    shape: "Or"
   },
   {
     Name: "Unassign Reviewers",
@@ -242,13 +242,13 @@ var data = [
     Name: "Sequence Group01 Rendezvous",
     ReportingNode: ["Unassign Reviewers"],
     ActiveNode: "",
-    shape: "SequentialAccessStorage"
+    shape: "SummingJunction"
   },
   {
     Name: "Sequence Group03 Point",
     ReportingNode: ["Parallel Group02 Point"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "SummingJunction"
   },
   {
     Name: "Follow-up",
@@ -266,7 +266,7 @@ var data = [
     Name: "Sequence Group03 Rendezvous",
     ReportingNode: ["ValidateRIFollowUp"],
     ActiveNode: "",
-    shape: "SequentialAccessStorage"
+    shape: "SummingJunction"
   },
   {
     Name: "Parallel Group02 Rendezvous",
@@ -276,7 +276,7 @@ var data = [
       "Sequence Group03 Rendezvous"
     ],
     ActiveNode: "Parallel Group02 Rendezvous",
-    shape: "SequentialAccessStorage"
+    shape: "Or"
   },
   {
     Name: "RI Comment Container",
@@ -327,7 +327,6 @@ var data = [
     shape: "Terminator"
   }
 ];
-
 //addNode("node21", ["node1", "node2"], "node21", "Data");
 
 /////////////////////////////////////////////
@@ -360,16 +359,9 @@ var diagram = new ej.diagrams.Diagram(
     },
 
     getNodeDefaults: obj => {
-      obj.width = 100;
-      obj.height = 100;
+      obj.width = 90;
+      obj.height = 90;
       obj.borderWidth = 10;
-      obj.annotations = [
-        {
-          id: "label1",
-          content: obj.data.Name,
-          style: { textWrapping: "Wrap", color: "white" }
-        }
-      ];
 
       obj.shape = {
         type: "Flow",
@@ -393,6 +385,25 @@ var diagram = new ej.diagrams.Diagram(
           strokeColor: "none",
           strokeWidth: 2
         };
+      }
+      switch (obj.data.shape) {
+        case "Or":
+          obj.width = 40;
+          obj.height = 40;
+          break;
+        case "SummingJunction":
+          obj.width = 15;
+          obj.height = 15;
+          break;
+        default:
+          obj.annotations = [
+            {
+              id: "label1",
+              content: obj.data.Name,
+              style: { textWrapping: "Wrap", color: "white" }
+            }
+          ];
+          break;
       }
       //shadow = { angle: 40, opacity: 0.8, distance: 10 };
       return obj;

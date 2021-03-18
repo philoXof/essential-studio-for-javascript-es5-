@@ -327,7 +327,7 @@ Update Vendor DueDate
 Activity  = carrée
 
 If own review
-DecisionPoint
+DecisionPoint = losange
 
 Decision Group01 Rendezvous
 DecisionRendezvous
@@ -342,7 +342,7 @@ Decision Group02 Point
 DecisionPoint
 
 Decision Group02 Rendezvous
-DecisionRendezvous
+DecisionRendezvous = losange
 
 DC Follow-up
 Activity  = carrée
@@ -351,7 +351,7 @@ Sequence Group02 Rendezvous
 SequenceRendezvous
 
 Sequence Group01 Point
-SequencePoint
+SequencePoint = petitrond
 
 Parallel Group01 Point
 ParallelPoint
