@@ -134,139 +134,162 @@ var data = [
     Name: "Process Start",
     ReportingNode: [""],
     ActiveNode: "",
-    shape: "Terminator"
+    shape: "Terminator",
+    shapeXML: "ProcessStart"
   },
   {
     Name: "InitCustomProps and Fill Start Date",
     ReportingNode: ["Process Start"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Rename Workflow",
     ReportingNode: ["InitCustomProps and Fill Start Date"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Update Vendor DueDate",
     ReportingNode: ["Rename Workflow"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "If own review",
     ReportingNode: ["Update Vendor DueDate"],
     ActiveNode: "",
-    shape: "Decision"
+    shape: "Decision",
+    shapeXML: "DecisionPoint"
   },
   {
     Name: "Decision Group01 Rendezvous",
     ReportingNode: ["If own review"],
     ActiveNode: "",
-    shape: "Decision"
+    shape: "Decision",
+    shapeXML: "DecisionRendezvous"
   },
   {
     Name: "Parallel Group02 Point",
     ReportingNode: ["Decision Group01 Rendezvous"],
     ActiveNode: "",
-    shape: "Or"
+    shape: "Or",
+    shapeXML: "ParallelPoint"
   },
   {
     Name: "Sequence Group02 Point",
     ReportingNode: ["Parallel Group02 Point"],
     ActiveNode: "",
-    shape: "SummingJunction"
+    shape: "DirectData",
+    shapeXML: "SequencePoint"
   },
   {
     Name: "Decision Group02 Point",
     ReportingNode: ["Sequence Group02 Point"],
     ActiveNode: "",
-    shape: "Decision"
+    shape: "Decision",
+    shapeXML: "DecisionPoint"
   },
   {
     Name: "Decision Group02 Rendezvous",
     ReportingNode: ["Decision Group02 Point"],
     ActiveNode: "",
-    shape: "Decision"
+    shape: "Decision",
+    shapeXML: "DecisionRendezvous"
   },
   {
     Name: "DC Follow-up",
     ReportingNode: ["Decision Group02 Rendezvous"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Sequence Group02 Rendezvous",
     ReportingNode: ["DC Follow-up", "Decision Group02 Point"],
     ActiveNode: "",
-    shape: "SummingJunction"
+    shape: "DirectData",
+    shapeXML: "SequenceRendezvous"
   },
   {
     Name: "Sequence Group01 Point",
     ReportingNode: ["Parallel Group02 Point"],
     ActiveNode: "",
-    shape: "SummingJunction"
+    shape: "DirectData",
+    shapeXML: "SequencePoint"
   },
   {
     Name: "Parallel Group01 Point",
     ReportingNode: ["Sequence Group01 Point"],
     ActiveNode: "",
-    shape: "Or"
+    shape: "Or",
+    shapeXML: "ParallelPoint"
   },
   {
     Name: "External Review",
     ReportingNode: ["Parallel Group01 Point"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Internal Review",
     ReportingNode: ["Parallel Group01 Point"],
     ActiveNode: "Internal Review",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Parallel Group01 Rendezvous",
     ReportingNode: ["External Review", "Internal Review"],
     ActiveNode: "Parallel Group01 Rendezvous",
-    shape: "Or"
+    shape: "DirectData",
+    shapeXML: "ParallelRendezvous"
   },
   {
     Name: "Unassign Reviewers",
     ReportingNode: ["Parallel Group01 Rendezvous"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Sequence Group01 Rendezvous",
     ReportingNode: ["Unassign Reviewers"],
     ActiveNode: "",
-    shape: "SummingJunction"
+    shape: "DirectData",
+    shapeXML: "SequenceRendezvous"
   },
   {
     Name: "Sequence Group03 Point",
     ReportingNode: ["Parallel Group02 Point"],
     ActiveNode: "",
-    shape: "SummingJunction"
+    shape: "DirectData",
+    shapeXML: "SequencePoint"
   },
   {
     Name: "Follow-up",
     ReportingNode: ["Sequence Group03 Point"],
     ActiveNode: "Follow-up",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "ValidateRIFollowUp",
     ReportingNode: ["Follow-up"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Sequence Group03 Rendezvous",
     ReportingNode: ["ValidateRIFollowUp"],
     ActiveNode: "",
-    shape: "SummingJunction"
+    shape: "DirectData",
+    shapeXML: "SequenceRendezvous"
   },
   {
     Name: "Parallel Group02 Rendezvous",
@@ -276,55 +299,64 @@ var data = [
       "Sequence Group03 Rendezvous"
     ],
     ActiveNode: "Parallel Group02 Rendezvous",
-    shape: "Or"
+    shape: "DirectData",
+    shapeXML: "ParallelRendezvous"
   },
   {
     Name: "RI Comment Container",
     ReportingNode: ["Parallel Group02 Rendezvous", "If own review"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Comments Consolidation",
     ReportingNode: ["RI Comment Container"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Update Comments",
     ReportingNode: ["Comments Consolidation"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Update States and End Date",
     ReportingNode: ["Update Comments"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Decision Group07 Point",
     ReportingNode: ["Update States and End Date"],
     ActiveNode: "",
-    shape: "Decision"
+    shape: "Decision",
+    shapeXML: "DecisionPoint"
   },
   {
     Name: "Decision Group07 Rendezvous",
     ReportingNode: ["Decision Group07 Point"],
     ActiveNode: "",
-    shape: "Decision"
+    shape: "Decision",
+    shapeXML: "DecisionRendezvous"
   },
   {
     Name: "Error_Notification",
     ReportingNode: ["Decision Group07 Rendezvous", "If own review"],
     ActiveNode: "",
-    shape: "Process"
+    shape: "Process",
+    shapeXML: "Activity"
   },
   {
     Name: "Process End",
     ReportingNode: ["Error_Notification", "Decision Group07 Point"],
     ActiveNode: "",
-    shape: "Terminator"
+    shape: "Terminator",
+    shapeXML: "ProcessEnd"
   }
 ];
 //addNode("node21", ["node1", "node2"], "node21", "Data");
@@ -359,8 +391,6 @@ var diagram = new ej.diagrams.Diagram(
     },
 
     getNodeDefaults: obj => {
-      obj.width = 90;
-      obj.height = 90;
       obj.borderWidth = 10;
 
       obj.shape = {
@@ -387,24 +417,53 @@ var diagram = new ej.diagrams.Diagram(
         };
       }
       switch (obj.data.shape) {
+        case "Terminator":
+          obj.height = 50;
+          obj.width = 100;
+          obj.annotations = [
+            {
+              id: "label1",
+              content: obj.data.Name,
+              style: {
+                textWrapping: "Wrap",
+                color: "white",
+                bold: true,
+                fontSize: "12"
+              }
+            }
+          ];
+          break;
+        case "Decision":
+          obj.width = 60;
+          obj.height = 60;
+          break;
         case "Or":
           obj.width = 40;
           obj.height = 40;
           break;
-        case "SummingJunction":
-          obj.width = 15;
-          obj.height = 15;
+        case "DirectData":
+          obj.width = 20;
+          obj.height = 20;
           break;
         default:
           obj.annotations = [
             {
               id: "label1",
               content: obj.data.Name,
-              style: { textWrapping: "Wrap", color: "white" }
+              style: {
+                textWrapping: "Wrap",
+                color: "white",
+                bold: true,
+                fontSize: "12"
+              }
             }
           ];
+          obj.width = 110;
+          obj.height = 70;
           break;
       }
+      if (obj.data.shapeXML == "ProcessStart") obj.style.fill = "#00FF00";
+      if (obj.data.shapeXML == "ProcessEnd") obj.style.fill = "red";
       //shadow = { angle: 40, opacity: 0.8, distance: 10 };
       return obj;
     },
