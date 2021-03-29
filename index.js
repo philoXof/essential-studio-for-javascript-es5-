@@ -3,132 +3,8 @@ ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting);
 /////////////////////////////////////////////
 /*                  DATA                   */
 /////////////////////////////////////////////
-/*var data = [
-  {
-    Name: "node1",
-    ReportingNode: [""],
-    ActiveNode: 0,
-    shape: "Terminator"
-  }
-];
-addNode("node2", ["node1"], "", "Process");
-data.push(
-  {
-    Name: "node3",
-    ReportingNode: ["node2"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node4",
-    ReportingNode: ["node3"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node5",
-    ReportingNode: ["node4"],
-    ActiveNode: "",
-    shape: "Decision"
-  },
 
-  {
-    Name: "node6",
-    ReportingNode: ["node5"],
-    ActiveNode: "",
-    shape: "Or"
-  },
-  {
-    Name: "node7",
-    ReportingNode: ["node6"],
-    ActiveNode: "",
-    shape: "Decision"
-  },
-  {
-    Name: "node8",
-    ReportingNode: ["node7"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node9",
-    ReportingNode: ["node6"],
-    ActiveNode: "node9",
-    shape: "Or"
-  },
-  {
-    Name: "node10",
-    ReportingNode: ["node9"],
-    ActiveNode: "node10",
-    shape: "Process"
-  },
-  {
-    Name: "node11",
-    ReportingNode: ["node9"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node12",
-    ReportingNode: ["node6"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node13",
-    ReportingNode: ["node12"],
-    ActiveNode: "node13",
-    shape: "Process"
-  },
-  {
-    Name: "node14",
-    ReportingNode: ["node10", "node11", "node8", "node13"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node15",
-    ReportingNode: ["node14", "node5"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node16",
-    ReportingNode: ["node15"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "17",
-    ReportingNode: ["node16"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node18",
-    ReportingNode: ["17"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node19",
-    ReportingNode: ["node18"],
-    ActiveNode: "",
-    shape: "Decision"
-  },
-  {
-    Name: "node20",
-    ReportingNode: ["node19", "node5"],
-    ActiveNode: "",
-    shape: "Process"
-  },
-  {
-    Name: "node21",
-    ReportingNode: ["node20", "node19"],
-    ActiveNode: "",
-    shape: "Terminator"
-  }
-);*/
+//importer via une requête ou via le C#
 var data = [
   {
     Name: "Process Start",
@@ -359,8 +235,6 @@ var data = [
     shapeXML: "ProcessEnd"
   }
 ];
-//addNode("node21", ["node1", "node2"], "node21", "Data");
-
 /////////////////////////////////////////////
 /*                 DIAGRAM                 */
 /////////////////////////////////////////////
@@ -387,7 +261,7 @@ var diagram = new ej.diagrams.Diagram(
     dataSourceSettings: {
       id: "Name",
       parentId: "ReportingNode",
-      dataManager: items //,items2
+      dataManager: items
     },
 
     getNodeDefaults: obj => {
@@ -464,7 +338,6 @@ var diagram = new ej.diagrams.Diagram(
       }
       if (obj.data.shapeXML == "ProcessStart") obj.style.fill = "#00FF00";
       if (obj.data.shapeXML == "ProcessEnd") obj.style.fill = "red";
-      //shadow = { angle: 40, opacity: 0.8, distance: 10 };
       return obj;
     },
 
@@ -485,25 +358,14 @@ var diagram = new ej.diagrams.Diagram(
       connector.sourceDecorator = { shape: "Circle" };
       connector.sourceDecorator.style.fill = "#c8d400";
       diagram.bridgeDirection = "Top";
-      //diagram.BranchTypes = "Left";
-      /*connector.constraints = {
-        constraints: ej.diagrams.ConnectorConstraints.InheritBridging
-        
-          ej.diagrams.ConnectorConstraints.Default |
-          ej.diagrams.ConnectorConstraints.LineRouting |
-          ~ej.diagrams.ConnectorConstraints.Select
-          
-      };*/
       return connector;
     },
 
     constraints:
-      //ej.diagrams.DiagramConstraints.Default |
       ej.diagrams.DiagramConstraints.Tooltip |
       ej.diagrams.DiagramConstraints.Zoom |
       ej.diagrams.DiagramConstraints.Bridging |
-      ej.diagrams.DiagramConstraints.LineRouting, //|
-    //~ej.diagrams.DiagramConstraints.UserInteraction,
+      ej.diagrams.DiagramConstraints.LineRouting,
     snapSettings: {
       constraints: ej.diagrams.SnapConstraints.None
     }
@@ -513,12 +375,11 @@ var diagram = new ej.diagrams.Diagram(
 );
 diagram.fitToPage({ mode: "Width" });
 
-function addNode(nodeName, nodeReportingNode, nodeActiveNode, nodeshape) {
-  //console.log(Name + ReportingNode + ActiveNode + shape);
+function addNode(Name, ReportingNode, ActiveNode, shape) {
   data.push({
-    Name: nodeName,
-    ReportingNode: nodeReportingNode,
-    ActiveNode: nodeActiveNode,
-    shape: nodeshape
+    Name,
+    ReportingNode,
+    ActiveNode,
+    shape
   });
 }

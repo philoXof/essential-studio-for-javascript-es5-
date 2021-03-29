@@ -410,3 +410,130 @@ Activity  = carrée
 Process End
 ProcessEnd
 */
+
+/*var data = [
+  {
+    Name: "node1",
+    ReportingNode: [""],
+    ActiveNode: 0,
+    shape: "Terminator"
+  }
+];
+addNode("node2", ["node1"], "", "Process");
+data.push(
+  {
+    Name: "node3",
+    ReportingNode: ["node2"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node4",
+    ReportingNode: ["node3"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node5",
+    ReportingNode: ["node4"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+
+  {
+    Name: "node6",
+    ReportingNode: ["node5"],
+    ActiveNode: "",
+    shape: "Or"
+  },
+  {
+    Name: "node7",
+    ReportingNode: ["node6"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+  {
+    Name: "node8",
+    ReportingNode: ["node7"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node9",
+    ReportingNode: ["node6"],
+    ActiveNode: "node9",
+    shape: "Or"
+  },
+  {
+    Name: "node10",
+    ReportingNode: ["node9"],
+    ActiveNode: "node10",
+    shape: "Process"
+  },
+  {
+    Name: "node11",
+    ReportingNode: ["node9"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node12",
+    ReportingNode: ["node6"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node13",
+    ReportingNode: ["node12"],
+    ActiveNode: "node13",
+    shape: "Process"
+  },
+  {
+    Name: "node14",
+    ReportingNode: ["node10", "node11", "node8", "node13"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node15",
+    ReportingNode: ["node14", "node5"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node16",
+    ReportingNode: ["node15"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "17",
+    ReportingNode: ["node16"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node18",
+    ReportingNode: ["17"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node19",
+    ReportingNode: ["node18"],
+    ActiveNode: "",
+    shape: "Decision"
+  },
+  {
+    Name: "node20",
+    ReportingNode: ["node19", "node5"],
+    ActiveNode: "",
+    shape: "Process"
+  },
+  {
+    Name: "node21",
+    ReportingNode: ["node20", "node19"],
+    ActiveNode: "",
+    shape: "Terminator"
+  }
+);*/
