@@ -8,73 +8,17 @@ ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting);
 var data = [
   {
     Name: "Process Start",
-    ActiveNode: "",
+    ActiveNode: "Process Start",
     Shape: "Terminator",
     ReportingNode: [""],
     ShapeXML: "ProcessStart",
     Status: "Unknown"
   },
   {
-    Name: "InitCustomProps and Fill Start Date",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["Process Start"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Rename Workflow",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["InitCustomProps and Fill Start Date"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Update Vendor DueDate",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["Rename Workflow"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "If own review",
-    ActiveNode: "",
-    Shape: "Decision",
-    ReportingNode: ["Update Vendor DueDate"],
-    ShapeXML: "DecisionPoint",
-    Status: "Unknown"
-  },
-  {
-    Name: "Decision Group01 Rendezvous",
-    ActiveNode: "",
-    Shape: "Decision",
-    ReportingNode: ["If own review"],
-    ShapeXML: "DecisionRendezvous",
-    Status: "Unknown"
-  },
-  {
-    Name: "Parallel Group02 Point",
-    ActiveNode: "",
-    Shape: "Or",
-    ReportingNode: ["Decision Group01 Rendezvous"],
-    ShapeXML: "ParallelPoint",
-    Status: "Unknown"
-  },
-  {
-    Name: "Sequence Group02 Point",
-    ActiveNode: "",
-    Shape: "DirectData",
-    ReportingNode: ["Parallel Group02 Point"],
-    ShapeXML: "SequencePoint",
-    Status: "Unknown"
-  },
-  {
     Name: "Decision Group02 Point",
-    ActiveNode: "",
+    ActiveNode: "Decision Group02 Point",
     Shape: "Decision",
-    ReportingNode: ["Sequence Group02 Point"],
+    ReportingNode: ["Process Start"],
     ShapeXML: "DecisionPoint",
     Status: "Unknown"
   },
@@ -87,182 +31,82 @@ var data = [
     Status: "Unknown"
   },
   {
-    Name: "DC Follow-up",
+    Name: "Choose Records To Apply",
     ActiveNode: "",
     Shape: "Process",
-    ReportingNode: ["Decision Group02 Rendezvous"],
+    ReportingNode: ["Decision Group02 Rendezvous", "Decision Group01 Point"],
     ShapeXML: "Activity",
     Status: "Unknown"
   },
   {
-    Name: "Sequence Group02 Rendezvous",
-    ActiveNode: "",
-    Shape: "DirectData",
-    ReportingNode: ["DC Follow-up", "Decision Group02 Point"],
-    ShapeXML: "SequenceRendezvous",
-    Status: "Unknown"
-  },
-  {
-    Name: "Sequence Group01 Point",
-    ActiveNode: "",
-    Shape: "DirectData",
-    ReportingNode: ["Parallel Group02 Point"],
-    ShapeXML: "SequencePoint",
-    Status: "Unknown"
-  },
-  {
-    Name: "Parallel Group01 Point",
-    ActiveNode: "",
-    Shape: "Or",
-    ReportingNode: ["Sequence Group01 Point"],
-    ShapeXML: "ParallelPoint",
-    Status: "Unknown"
-  },
-  {
-    Name: "External Review",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["Parallel Group01 Point"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Internal Review",
-    ActiveNode: "Internal Review",
-    Shape: "Process",
-    ReportingNode: ["Parallel Group01 Point"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Parallel Group01 Rendezvous",
-    ActiveNode: "Parallel Group01 Rendezvous",
-    Shape: "DirectData",
-    ReportingNode: ["External Review", "Internal Review"],
-    ShapeXML: "ParallelRendezvous",
-    Status: "Unknown"
-  },
-  {
-    Name: "Unassign Reviewers",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["Parallel Group01 Rendezvous"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Sequence Group01 Rendezvous",
-    ActiveNode: "",
-    Shape: "DirectData",
-    ReportingNode: ["Unassign Reviewers"],
-    ShapeXML: "SequenceRendezvous",
-    Status: "Unknown"
-  },
-  {
-    Name: "Sequence Group03 Point",
-    ActiveNode: "",
-    Shape: "DirectData",
-    ReportingNode: ["Parallel Group02 Point"],
-    ShapeXML: "SequencePoint",
-    Status: "Unknown"
-  },
-  {
-    Name: "Follow-up",
-    ActiveNode: "Follow-up",
-    Shape: "Process",
-    ReportingNode: ["Sequence Group03 Point"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "ValidateRIFollowUp",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["Follow-up"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Sequence Group03 Rendezvous",
-    ActiveNode: "",
-    Shape: "DirectData",
-    ReportingNode: ["ValidateRIFollowUp"],
-    ShapeXML: "SequenceRendezvous",
-    Status: "Unknown"
-  },
-  {
-    Name: "Parallel Group02 Rendezvous",
-    ActiveNode: "Parallel Group02 Rendezvous",
-    Shape: "DirectData",
-    ReportingNode: [
-      "Sequence Group02 Rendezvous",
-      "Sequence Group01 Rendezvous",
-      "Sequence Group03 Rendezvous"
-    ],
-    ShapeXML: "ParallelRendezvous",
-    Status: "Unknown"
-  },
-  {
-    Name: "RI Comment Container",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["Parallel Group02 Rendezvous", "If own review"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Comments Consolidation",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["RI Comment Container"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Update Comments",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["Comments Consolidation"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Update States and End Date",
-    ActiveNode: "",
-    Shape: "Process",
-    ReportingNode: ["Update Comments"],
-    ShapeXML: "Activity",
-    Status: "Unknown"
-  },
-  {
-    Name: "Decision Group07 Point",
+    Name: "Decision Group03 Point",
     ActiveNode: "",
     Shape: "Decision",
-    ReportingNode: ["Update States and End Date"],
+    ReportingNode: ["Choose Records To Apply"],
     ShapeXML: "DecisionPoint",
     Status: "Unknown"
   },
   {
-    Name: "Decision Group07 Rendezvous",
+    Name: "Decision Group03 Rendezvous",
     ActiveNode: "",
     Shape: "Decision",
-    ReportingNode: ["Decision Group07 Point"],
+    ReportingNode: ["Decision Group03 Point"],
     ShapeXML: "DecisionRendezvous",
     Status: "Unknown"
   },
   {
-    Name: "Error_Notification",
-    ActiveNode: "",
+    Name: "ApplyRetrofit",
+    ActiveNode: "ApplyRetrofit",
     Shape: "Process",
-    ReportingNode: ["Decision Group07 Rendezvous", "If own review"],
+    ReportingNode: ["Decision Group03 Rendezvous", "Decision Group02 Point"],
     ShapeXML: "Activity",
     Status: "Unknown"
   },
   {
-    Name: "Process End",
+    Name: "Test Erreurs",
+    ActiveNode: "Test Erreurs",
+    Shape: "Decision",
+    ReportingNode: ["ApplyRetrofit"],
+    ShapeXML: "DecisionPoint",
+    Status: "Unknown"
+  },
+  {
+    Name: "Affichage Erreur",
     ActiveNode: "",
+    Shape: "Process",
+    ReportingNode: ["Test Erreurs"],
+    ShapeXML: "Activity",
+    Status: "Unknown"
+  },
+  {
+    Name: "Fin Gestion Erreurs",
+    ActiveNode: "Fin Gestion Erreurs",
+    Shape: "Decision",
+    ReportingNode: ["Affichage Erreur", "Test Erreurs"],
+    ShapeXML: "DecisionRendezvous",
+    Status: "Unknown"
+  },
+  {
+    Name: "Decision Group01 Point",
+    ActiveNode: "Decision Group01 Point",
+    Shape: "Decision",
+    ReportingNode: ["Fin Gestion Erreurs"],
+    ShapeXML: "DecisionPoint",
+    Status: "Unknown"
+  },
+  {
+    Name: "Decision Group01 Rendezvous",
+    ActiveNode: "Decision Group01 Rendezvous",
+    Shape: "Decision",
+    ReportingNode: ["Decision Group01 Point"],
+    ShapeXML: "DecisionRendezvous",
+    Status: "Unknown"
+  },
+  {
+    Name: "Process End",
+    ActiveNode: "Process End",
     Shape: "Terminator",
-    ReportingNode: ["Error_Notification", "Decision Group07 Point"],
+    ReportingNode: ["Decision Group01 Rendezvous", "Decision Group03 Point"],
     ShapeXML: "ProcessEnd",
     Status: "Unknown"
   }
@@ -322,6 +166,7 @@ var diagram = new ej.diagrams.Diagram(
           strokeWidth: 2
         };
       }
+
       switch (obj.data.Shape) {
         case "Terminator":
           obj.height = 50;
