@@ -1,19 +1,222 @@
-ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting);
-
 /////////////////////////////////////////////
 /*                  DATA                   */
 /////////////////////////////////////////////
 
 //importer via une requête ou via le C#
-var data = [{"Name":"Choix du document","ActiveNode":"","Shape":"Terminator","ReportingNode":[""],"ShapeXML":"ProcessStart","Status":"Unknown"},{"Name":"Initialisation","ActiveNode":"","Shape":"Process","ReportingNode":["Choix du document"],"ShapeXML":"Activity","Status":"Unknown"},{"Name":"Decision Initialisation","ActiveNode":"","Shape":"Decision","ReportingNode":["Initialisation"],"ShapeXML":"DecisionPoint","Status":"Unknown"},{"Name":"Fin si erreur","ActiveNode":"","Shape":"Terminator","ReportingNode":["Decision Initialisation"],"ShapeXML":"ProcessEnd","Status":"Unknown"},{"Name":"Lancement Rendezvous","ActiveNode":"","Shape":"Decision","ReportingNode":["Fin si erreur","Decision Initialisation"],"ShapeXML":"DecisionRendezvous","Status":"Unknown"},{"Name":"Lancement","ActiveNode":"","Shape":"Process","ReportingNode":["Lancement Rendezvous"],"ShapeXML":"Activity","Status":"Unknown"},{"Name":"Parallel Group01 Point","ActiveNode":"","Shape":"Or","ReportingNode":["Lancement"],"ShapeXML":"ParallelPoint","Status":"Unknown"},{"Name":"Copy of Sequence Group02 Point","ActiveNode":"","Shape":"DirectData","ReportingNode":["Parallel Group01 Point"],"ShapeXML":"SequencePoint","Status":"Unknown"},{"Name":"Réponse à l industriel","ActiveNode":"Réponse à l industriel","Shape":"Process","ReportingNode":["Copy of Sequence Group02 Point","Decision Group02 Point"],"ShapeXML":"Activity","Status":"Unknown"},{"Name":"Decision Group02 Point","ActiveNode":"","Shape":"Decision","ReportingNode":["Réponse à l industriel"],"ShapeXML":"DecisionPoint","Status":"Unknown"},{"Name":"Decision Group02 Rendezvous","ActiveNode":"","Shape":"Decision","ReportingNode":["Decision Group02 Point"],"ShapeXML":"DecisionRendezvous","Status":"Unknown"},{"Name":"Auto SF","ActiveNode":"","Shape":"Process","ReportingNode":["Decision Group02 Rendezvous"],"ShapeXML":"Activity","Status":"Unknown"},{"Name":"Copy of Sequence Group02 Rendezvous","ActiveNode":"","Shape":"DirectData","ReportingNode":["Auto SF"],"ShapeXML":"SequenceRendezvous","Status":"Unknown"},{"Name":"Copy of Sequence Group01 Point","ActiveNode":"","Shape":"DirectData","ReportingNode":["Parallel Group01 Point"],"ShapeXML":"SequencePoint","Status":"Unknown"},{"Name":"Synthèse","ActiveNode":"","Shape":"Process","ReportingNode":["Copy of Sequence Group01 Point","Decision Group03 Point"],"ShapeXML":"Activity","Status":"Unknown"},{"Name":"Decision Group03 Point","ActiveNode":"","Shape":"Decision","ReportingNode":["Synthèse"],"ShapeXML":"DecisionPoint","Status":"Unknown"},{"Name":"Decision Group03 Rendezvous","ActiveNode":"","Shape":"Decision","ReportingNode":["Decision Group03 Point"],"ShapeXML":"DecisionRendezvous","Status":"Unknown"},{"Name":"Auto SG","ActiveNode":"","Shape":"Process","ReportingNode":["Decision Group03 Rendezvous"],"ShapeXML":"Activity","Status":"Unknown"},{"Name":"Copy of Sequence Group01 Rendezvous","ActiveNode":"","Shape":"DirectData","ReportingNode":["Auto SG"],"ShapeXML":"SequenceRendezvous","Status":"Unknown"},{"Name":"Parallel Group01 Rendezvous","ActiveNode":"Parallel Group01 Rendezvous","Shape":"DirectData","ReportingNode":["Copy of Sequence Group02 Rendezvous","Copy of Sequence Group01 Rendezvous"],"ShapeXML":"ParallelRendezvous","Status":"Unknown"},{"Name":"Decision Group04 Point","ActiveNode":"","Shape":"Decision","ReportingNode":["Parallel Group01 Rendezvous"],"ShapeXML":"DecisionPoint","Status":"Unknown"},{"Name":"Decision Group04 Rendezvous","ActiveNode":"","Shape":"Decision","ReportingNode":["Decision Group04 Point"],"ShapeXML":"DecisionRendezvous","Status":"Unknown"},{"Name":"Archivage","ActiveNode":"","Shape":"Process","ReportingNode":["Decision Group04 Rendezvous"],"ShapeXML":"Activity","Status":"Unknown"},{"Name":"Auto Archivage","ActiveNode":"","Shape":"Process","ReportingNode":["Archivage"],"ShapeXML":"Activity","Status":"Unknown"},{"Name":"Process End","ActiveNode":"","Shape":"Terminator","ReportingNode":["Auto Archivage"],"ShapeXML":"ProcessEnd","Status":"Unknown"}];
+let data = [
+  {
+    Name: "Choix du document",
+    ActiveNode: "",
+    Shape: "Terminator",
+    ReportingNode: [""],
+    ShapeXML: "ProcessStart",
+    Status: "Unknown"
+  },
+  {
+    Name: "Initialisation",
+    ActiveNode: "",
+    Shape: "Process",
+    ReportingNode: ["Choix du document"],
+    ShapeXML: "Activity",
+    Status: "Unknown"
+  },
+  {
+    Name: "Decision Initialisation",
+    ActiveNode: "",
+    Shape: "Decision",
+    ReportingNode: ["Initialisation"],
+    ShapeXML: "DecisionPoint",
+    Status: "Unknown"
+  },
+  {
+    Name: "Fin si erreur",
+    ActiveNode: "",
+    Shape: "Terminator",
+    ReportingNode: ["Decision Initialisation"],
+    ShapeXML: "ProcessEnd",
+    Status: "Unknown"
+  },
+  {
+    Name: "Lancement Rendezvous",
+    ActiveNode: "",
+    Shape: "Decision",
+    ReportingNode: ["Fin si erreur", "Decision Initialisation"],
+    ShapeXML: "DecisionRendezvous",
+    Status: "Unknown"
+  },
+  {
+    Name: "Lancement",
+    ActiveNode: "",
+    Shape: "Process",
+    ReportingNode: ["Lancement Rendezvous"],
+    ShapeXML: "Activity",
+    Status: "Unknown"
+  },
+  {
+    Name: "Parallel Group01 Point",
+    ActiveNode: "",
+    Shape: "Or",
+    ReportingNode: ["Lancement"],
+    ShapeXML: "ParallelPoint",
+    Status: "Unknown"
+  },
+  {
+    Name: "Copy of Sequence Group02 Point",
+    ActiveNode: "",
+    Shape: "DirectData",
+    ReportingNode: ["Parallel Group01 Point"],
+    ShapeXML: "SequencePoint",
+    Status: "Unknown"
+  },
+  {
+    Name: "Réponse à l industriel",
+    ActiveNode: "Réponse à l industriel",
+    Shape: "Process",
+    ReportingNode: ["Copy of Sequence Group02 Point", "Decision Group02 Point"],
+    ShapeXML: "Activity",
+    Status: "Unknown"
+  },
+  {
+    Name: "Decision Group02 Point",
+    ActiveNode: "",
+    Shape: "Decision",
+    ReportingNode: ["Réponse à l industriel"],
+    ShapeXML: "DecisionPoint",
+    Status: "Unknown"
+  },
+  {
+    Name: "Decision Group02 Rendezvous",
+    ActiveNode: "",
+    Shape: "Decision",
+    ReportingNode: ["Decision Group02 Point"],
+    ShapeXML: "DecisionRendezvous",
+    Status: "Unknown"
+  },
+  {
+    Name: "Auto SF",
+    ActiveNode: "",
+    Shape: "Process",
+    ReportingNode: ["Decision Group02 Rendezvous"],
+    ShapeXML: "Activity",
+    Status: "Unknown"
+  },
+  {
+    Name: "Copy of Sequence Group02 Rendezvous",
+    ActiveNode: "",
+    Shape: "DirectData",
+    ReportingNode: ["Auto SF"],
+    ShapeXML: "SequenceRendezvous",
+    Status: "Unknown"
+  },
+  {
+    Name: "Copy of Sequence Group01 Point",
+    ActiveNode: "",
+    Shape: "DirectData",
+    ReportingNode: ["Parallel Group01 Point"],
+    ShapeXML: "SequencePoint",
+    Status: "Unknown"
+  },
+  {
+    Name: "Synthèse",
+    ActiveNode: "",
+    Shape: "Process",
+    ReportingNode: ["Copy of Sequence Group01 Point", "Decision Group03 Point"],
+    ShapeXML: "Activity",
+    Status: "Unknown"
+  },
+  {
+    Name: "Decision Group03 Point",
+    ActiveNode: "",
+    Shape: "Decision",
+    ReportingNode: ["Synthèse"],
+    ShapeXML: "DecisionPoint",
+    Status: "Unknown"
+  },
+  {
+    Name: "Decision Group03 Rendezvous",
+    ActiveNode: "",
+    Shape: "Decision",
+    ReportingNode: ["Decision Group03 Point"],
+    ShapeXML: "DecisionRendezvous",
+    Status: "Unknown"
+  },
+  {
+    Name: "Auto SG",
+    ActiveNode: "",
+    Shape: "Process",
+    ReportingNode: ["Decision Group03 Rendezvous"],
+    ShapeXML: "Activity",
+    Status: "Unknown"
+  },
+  {
+    Name: "Copy of Sequence Group01 Rendezvous",
+    ActiveNode: "",
+    Shape: "DirectData",
+    ReportingNode: ["Auto SG"],
+    ShapeXML: "SequenceRendezvous",
+    Status: "Unknown"
+  },
+  {
+    Name: "Parallel Group01 Rendezvous",
+    ActiveNode: "Parallel Group01 Rendezvous",
+    Shape: "DirectData",
+    ReportingNode: [
+      "Copy of Sequence Group02 Rendezvous",
+      "Copy of Sequence Group01 Rendezvous"
+    ],
+    ShapeXML: "ParallelRendezvous",
+    Status: "Unknown"
+  },
+  {
+    Name: "Decision Group04 Point",
+    ActiveNode: "",
+    Shape: "Decision",
+    ReportingNode: ["Parallel Group01 Rendezvous"],
+    ShapeXML: "DecisionPoint",
+    Status: "Unknown"
+  },
+  {
+    Name: "Decision Group04 Rendezvous",
+    ActiveNode: "",
+    Shape: "Decision",
+    ReportingNode: ["Decision Group04 Point"],
+    ShapeXML: "DecisionRendezvous",
+    Status: "Unknown"
+  },
+  {
+    Name: "Archivage",
+    ActiveNode: "",
+    Shape: "Process",
+    ReportingNode: ["Decision Group04 Rendezvous"],
+    ShapeXML: "Activity",
+    Status: "Unknown"
+  },
+  {
+    Name: "Auto Archivage",
+    ActiveNode: "",
+    Shape: "Process",
+    ReportingNode: ["Archivage"],
+    ShapeXML: "Activity",
+    Status: "Unknown"
+  },
+  {
+    Name: "Process End",
+    ActiveNode: "",
+    Shape: "Terminator",
+    ReportingNode: ["Auto Archivage"],
+    ShapeXML: "ProcessEnd",
+    Status: "Unknown"
+  }
+];
 
 /////////////////////////////////////////////
 /*                 DIAGRAM                 */
 /////////////////////////////////////////////
+ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting);
 
-var items = new ej.data.DataManager(data, new ej.data.Query().take(7));
-
-var diagram = new ej.diagrams.Diagram(
+let items = new ej.data.DataManager(data, new ej.data.Query().take(7));
+let alreadyGone = true;
+let diagram = new ej.diagrams.Diagram(
   {
     width: "100%",
     height: "100%",
@@ -56,12 +259,23 @@ var diagram = new ej.diagrams.Diagram(
           strokeWidth: 2
         };
       } else {
+        alreadyGone = false;
         obj.style = {
           fill: "#00a75f",
           strokeColor: "none",
           strokeWidth: 2
         };
       }
+
+if (obj.data.ShapeXML === "ProcessStart") {
+                obj.style.fill = "#00FF00";
+            }
+            else if (obj.data.ShapeXML === "ProcessEnd") {
+                obj.style.fill = "red";
+            }
+            else if (alreadyGone === true) {
+                obj.style.fill = "grey";
+            }
 
       switch (obj.data.Shape) {
         case "Terminator":
